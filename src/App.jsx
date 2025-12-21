@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // IMPORT ROUTER
-import { Play, Facebook, Instagram, Youtube, Phone, Send, ChevronDown, MapPin, Mail, Plus, Minus, Star, Wifi, Coffee, Car, Quote, ArrowRight, MessageSquare, CheckCircle, Map, CreditCard, Shield, ShieldCheck, Headset, Menu, X } from 'lucide-react';
+import { Play, Facebook, Instagram, Youtube, Phone, Send, ChevronDown, ChevronLeft, ChevronRight, MapPin, Mail, Plus, Minus, Star, Wifi, Coffee, Car, Quote, ArrowRight, MessageSquare, CheckCircle, Map, CreditCard, Shield, ShieldCheck, Headset, Menu, X } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 
-// Import your assets here
+import WhatsAppButton from './components/WhatsAppButton';
 import Eastways from './assets/images/Eastways.png';
 import Logo from './assets/images/eastwyas logo 1.png';
 import masjid from './assets/images/mosque-building-with-intricate-architecture 1.png';
@@ -25,11 +25,51 @@ import g13 from './assets/images/g13.jpg';
 import LogoIcon from './assets/images/Bigger blue.png';
 import LogoText from './assets/images/EastWays Logo no bg name.png';
 import videoFile from './assets/videos/east-vid.mp4';
-// CHANGE these paths to match your actual file names
 import WorkImg1 from './assets/images/Rectangle 4.png';
 import WorkImg2 from './assets/images/Rectangle 5.png';
 import card1 from './assets/images/people.avif';
 import card2 from './assets/images/beautifully-lit-mosque-night-exterior-shot.jpg';
+import hotel1 from './assets/images/elaf al taqwa.jpg';
+import hotel2 from './assets/images/al shohada.jpg';
+import hotel3 from './assets/images/dallah taibah.jpg';
+import hotel4 from './assets/images/dar al taqwa.jpg';
+import hotel5 from './assets/images/doubletree2.avif';
+import hotel6 from './assets/images/elaf taiba1.jpg';
+import hotel7 from './assets/images/elaf-taiba-2.jpg';
+import hotel8 from './assets/images/emaar al manar1.jpg';
+import hotel9 from './assets/images/emaar al manar2.jpg';
+import hotel10 from './assets/images/emaar al manar3.jpg';
+import hotel11 from './assets/images/emaar al manar4.jpg';
+import hotel12 from './assets/images/emaar andalusia.png';
+import hotel13 from './assets/images/emaar andalusia2.jpg';
+import hotel14 from './assets/images/emaar elite.jpeg';
+import hotel15 from './assets/images/Emaar grand1.jpg';
+import hotel16 from './assets/images/emaar mektan.jpg';
+import hotel17 from './assets/images/emaar royal.jpg';
+import hotel18 from './assets/images/emaar royal2.jpg';
+import hotel19 from './assets/images/emaar taiba.jpeg';
+import hotel20 from './assets/images/hilton2.avif';
+import hotel21 from './assets/images/hilton3.avif';
+import hotel22 from './assets/images/hyatt1.webp';
+import hotel23 from './assets/images/hyatt2.webp';
+import hotel24 from './assets/images/maden.jpg';
+import hotel25 from './assets/images/makarem.webp';
+import hotel26 from './assets/images/makkaht1.png';
+import hotel27 from './assets/images/marriot1.jpg';
+import hotel28 from './assets/images/maysan al harithia.jpg';
+import hotel29 from './assets/images/millenium al aqeeq.webp';
+import hotel30 from './assets/images/pullman1.webp';
+import hotel31 from './assets/images/pullman2.webp';
+import hotel32 from './assets/images/saja al madinah.jpg';
+import hotel33 from './assets/images/swiss al maqam.webp';
+import hotel34 from './assets/images/swiss al maqam2.webp';
+import hotel35 from './assets/images/swissotel1.webp';
+import hotel36 from './assets/images/swissotel2.webp';
+import hotel37 from './assets/images/tiaba front.jpg';
+import hotel38 from './assets/images/voco1.webp';
+import hotel39 from './assets/images/doubletree-by-hilton.jpg';
+import hotel40 from './assets/images/address-jabal-omar1.jpg';
+
 
 
 
@@ -45,7 +85,7 @@ const Navbar = () => {
     const controlNavbar = () => {
       if (typeof window !== 'undefined') {
         const currentScrollY = window.scrollY;
-        
+
         // Always show if at top, otherwise hide on scroll down
         if (currentScrollY === 0) {
           setIsVisible(true);
@@ -70,23 +110,23 @@ const Navbar = () => {
   };
 
   return (
-    <nav 
+    <nav
       className={`fixed top-0 md:top-6 left-0 right-0 z-50 flex justify-center px-4 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-40'}`}
     >
       {/* Main Container */}
       <div className="bg-white/95 backdrop-blur-md rounded-b-2xl md:rounded-2xl shadow-xl border border-gray-100 px-4 py-3 w-full max-w-6xl relative">
-        
+
         <div className="flex justify-between items-center">
-          
+
           {/* --- LOGO SECTION --- */}
           <Link to="/" className="flex items-center space-x-2 cursor-pointer z-50" onClick={() => setIsMobileMenuOpen(false)}>
             {/* Icon */}
             <div className="w-10 h-10 flex items-center justify-center rounded-full overflow-hidden">
-               <img src={LogoIcon} alt="Eastways Icon" className="w-full h-full object-cover" />
+              <img src={LogoIcon} alt="Eastways Icon" className="w-full h-full object-cover" />
             </div>
             {/* Text Logo */}
             <div className="h-5 flex items-center">
-               <img src={LogoText} alt="Eastways" className="h-full w-auto object-contain" />
+              <img src={LogoText} alt="Eastways" className="h-full w-auto object-contain" />
             </div>
           </Link>
 
@@ -100,8 +140,8 @@ const Navbar = () => {
           </div>
 
           {/* --- DESKTOP BUTTON (Hidden on Mobile) --- */}
-          <button 
-            onClick={() => navigate('/contact')} 
+          <button
+            onClick={() => navigate('/contact')}
             className="hidden md:flex bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl font-medium transition text-sm shadow-md items-center gap-2"
           >
             <Phone size={16} />
@@ -109,7 +149,7 @@ const Navbar = () => {
           </button>
 
           {/* --- MOBILE TOGGLE BUTTON (Visible only on Mobile) --- */}
-          <button 
+          <button
             className="md:hidden text-gray-700 hover:text-blue-600 transition focus:outline-none z-50 p-1"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
@@ -119,10 +159,9 @@ const Navbar = () => {
 
         {/* --- MOBILE DROPDOWN MENU --- */}
         {/* Absolute position to drop down from the header */}
-        <div 
-          className={`absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md border-t border-gray-100 shadow-xl overflow-hidden transition-all duration-300 ease-in-out md:hidden flex flex-col rounded-b-2xl ${
-            isMobileMenuOpen ? 'max-h-[400px] opacity-100 py-6' : 'max-h-0 opacity-0 py-0'
-          }`}
+        <div
+          className={`absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md border-t border-gray-100 shadow-xl overflow-hidden transition-all duration-300 ease-in-out md:hidden flex flex-col rounded-b-2xl ${isMobileMenuOpen ? 'max-h-[400px] opacity-100 py-6' : 'max-h-0 opacity-0 py-0'
+            }`}
         >
           <div className="flex flex-col items-center space-y-6 font-medium text-lg text-gray-700">
             <button onClick={() => handleLinkClick('/')} className="hover:text-blue-600 transition">Home</button>
@@ -130,10 +169,10 @@ const Navbar = () => {
             <button onClick={() => handleLinkClick('/hotels')} className="hover:text-blue-600 transition">Hotels</button>
             <button onClick={() => handleLinkClick('/testimonials')} className="hover:text-blue-600 transition">Testimonials</button>
             <button onClick={() => handleLinkClick('/faqs')} className="hover:text-blue-600 transition">FAQs</button>
-            
+
             {/* Mobile Contact Button */}
-            <button 
-              onClick={() => handleLinkClick('/contact')} 
+            <button
+              onClick={() => handleLinkClick('/contact')}
               className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-medium transition shadow-md flex items-center gap-2 mt-4"
             >
               <Phone size={18} />
@@ -237,15 +276,17 @@ const GradientButton = ({ children, className, onClick }) => {
   );
 };
 
-const Hero = () => (
-  <header className="relative w-full min-h-screen flex flex-col justify-center items-center text-center overflow-x-hidden">
-    
-    {/* Background - Adjusted opacity and gradient */}
-    <div className="absolute inset-0 z-0 bg-gradient-to-b from-blue-100 via-blue-50 to-white"></div>
-    <div className="absolute inset-0 z-0 opacity-40" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?auto=format&fit=crop&q=80")', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+const Hero = () => {
+  const navigate = useNavigate();
+  return (
+    <header className="relative w-full min-h-screen flex flex-col justify-center items-center text-center overflow-x-hidden">
 
-    {/* 1. DEFINE ANIMATION STYLES */}
-    <style>{`
+      {/* Background - Adjusted opacity and gradient */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-blue-100 via-blue-50 to-white"></div>
+      <div className="absolute inset-0 z-0 opacity-40" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?auto=format&fit=crop&q=80")', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+
+      {/* 1. DEFINE ANIMATION STYLES */}
+      <style>{`
       @keyframes fadeUp {
         from { 
           opacity: 0; 
@@ -262,67 +303,73 @@ const Hero = () => (
       }
     `}</style>
 
-    {/* Main Container - Added w-full and px-4 for safety */}
-    <div className="z-10 w-full max-w-4xl mx-auto mt-24 px-4 md:px-6">
+      {/* Main Container - Added w-full and px-4 for safety */}
+      <div className="z-10 w-full max-w-4xl mx-auto mt-24 px-4 md:px-6">
 
-      {/* BADGE SECTION */}
-      {/* Changed min-w to w-auto and added max-w-full to prevent overflow */}
-      <div className="animate-fade-up relative inline-flex items-center justify-center bg-white/80 backdrop-blur-md py-1.5 px-1.5 pr-4 rounded-full mb-6 border border-white shadow-sm max-w-full w-auto">
-        {/* Logo Icon */}
-        <div className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center shadow-md overflow-hidden bg-white">
-          <img
-            src={LogoIcon}
-            alt="Eastways"
-            className="w-full h-full object-cover"
-          />
+        {/* BADGE SECTION */}
+        {/* Changed min-w to w-auto and added max-w-full to prevent overflow */}
+        <div className="animate-fade-up relative inline-flex items-center justify-center bg-white/80 backdrop-blur-md py-1.5 px-1.5 pr-4 rounded-full mb-6 border border-white shadow-sm max-w-full w-auto">
+          {/* Logo Icon */}
+          <div className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center shadow-md overflow-hidden bg-white">
+            <img
+              src={LogoIcon}
+              alt="Eastways"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <span className="text-xs md:text-sm font-semibold text-gray-800 ml-3 whitespace-nowrap">Plan Your Spiritual Journey</span>
         </div>
-        <span className="text-xs md:text-sm font-semibold text-gray-800 ml-3 whitespace-nowrap">Plan Your Spiritual Journey</span>
-      </div>
 
-      {/* HEADING */}
-      {/* Added break-words and adjusted mobile sizing */}
-      <h1
-        className="animate-fade-up text-4xl sm:text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight break-words"
-        style={{ animationDelay: '0.1s' }}
-      >
-        Your Sacred Journey Begins with<br className="hidden md:block" /> Eastways
-      </h1>
+        {/* HEADING */}
+        {/* Added break-words and adjusted mobile sizing */}
+        <h1
+          className="animate-fade-up text-4xl sm:text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight break-words"
+          style={{ animationDelay: '0.1s' }}
+        >
+          Your Sacred Journey Begins with<br className="hidden md:block" /> Eastways
+        </h1>
 
-      {/* SUBHEADING */}
-      <p
-        className="animate-fade-up text-gray-600 text-sm md:text-base max-w-xl mx-auto mb-10 px-2"
-        style={{ animationDelay: '0.2s' }}
-      >
-        Premium and Budget Friendly Umrah Hotels, and personalized service so you experience a journey that’s smooth, spiritual, and stress-free.
-      </p>
+        {/* SUBHEADING */}
+        <p
+          className="animate-fade-up text-gray-600 text-sm md:text-base max-w-xl mx-auto mb-10 px-2"
+          style={{ animationDelay: '0.2s' }}
+        >
+          Premium and Budget Friendly Umrah Hotels, and personalized service so you experience a journey that’s smooth, spiritual, and stress-free.
+        </p>
 
-      {/* GRADIENT BUTTON */}
-      <div className="animate-fade-up w-full flex justify-center" style={{ animationDelay: '0.3s' }}>
-        <GradientButton className="w-full sm:w-auto px-6 py-3 rounded-2xl font-semibold hover:scale-105 shadow-lg">
-          <Phone size={16} /> Schedule a 30mins call
-        </GradientButton>
-      </div>
-
-      {/* FOOTER TEXT */}
-      <div
-        className="animate-fade-up mt-12 md:mt-20 flex flex-col items-center gap-4"
-        style={{ animationDelay: '0.5s' }}
-      >
-        <p className="text-sm text-gray-500 font-semibold">Follow our journey <span className="font-bold">@GoEastWays</span></p>
-        
-        {/* Features List - Flex wrap added for mobile safety */}
-        <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-[10px] md:text-xs font-semibold text-gray-500 uppercase tracking-widest px-2">
-          <span>Umrah</span><span>•</span>
-          <span>Hotel Deals</span><span>•</span>
-          <span>Transportation</span><span>•</span>
-          <span>Visa</span><span>•</span>
-          <span>24/7 Support</span>
+        {/* GRADIENT BUTTON - UPDATED */}
+        <div className="animate-fade-up w-full flex justify-center" style={{ animationDelay: '0.3s' }}>
+          <GradientButton
+            // 3. Add the navigation handler here
+            onClick={() => navigate('/contact')}
+            className="w-full sm:w-auto px-6 py-3 rounded-2xl font-semibold hover:scale-105 shadow-lg"
+          >
+            <Phone size={16} /> Schedule a 30mins call
+          </GradientButton>
         </div>
-      </div>
 
-    </div>
-  </header>
-);
+
+        {/* FOOTER TEXT */}
+        <div
+          className="animate-fade-up mt-12 md:mt-20 flex flex-col items-center gap-4"
+          style={{ animationDelay: '0.5s' }}
+        >
+          <p className="text-sm text-gray-500 font-semibold">Follow our journey <span className="font-bold">@GoEastWays</span></p>
+
+          {/* Features List - Flex wrap added for mobile safety */}
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-[10px] md:text-xs font-semibold text-gray-500 uppercase tracking-widest px-2">
+            <span>Umrah</span><span>•</span>
+            <span>Hotel Deals</span><span>•</span>
+            <span>Transportation</span><span>•</span>
+            <span>Visa</span><span>•</span>
+            <span>24/7 Support</span>
+          </div>
+        </div>
+
+      </div>
+    </header>
+  );
+};
 
 const FeatureSection = ({ title, desc, image, reverse, iconOverlay, textOverlay, className, imageSizeClass, customVisual }) => {
 
@@ -733,15 +780,15 @@ const Gallery = () => {
   }, []);
 
   const images = [g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13];
-  
+
   const columns = [
-    images.slice(0, 2),   
-    images.slice(2, 3),   
-    images.slice(3, 5),   
-    images.slice(5, 7),   
-    images.slice(7, 9),   
-    images.slice(9, 11),  
-    images.slice(11, 13)  
+    images.slice(0, 2),
+    images.slice(2, 3),
+    images.slice(3, 5),
+    images.slice(5, 7),
+    images.slice(7, 9),
+    images.slice(9, 11),
+    images.slice(11, 13)
   ];
 
   useEffect(() => {
@@ -786,25 +833,25 @@ const Gallery = () => {
       */}
       <div className="flex justify-center gap-2 md:gap-4 w-[160%] -ml-[30%] md:w-[140%] md:-ml-[20%] pt-40 md:pt-64 -mb-40 md:-mb-80">
         {columns.map((colImages, colIndex) => {
-          
+
           const hiddenOnMobile = (colIndex === 0 || colIndex === 6) ? 'hidden md:flex' : 'flex';
           const isEven = colIndex % 2 !== 0;
           const relativeScroll = scrollY - offsetTop;
-          
-          const speed = isMobile 
-            ? (isEven ? -0.05 : -0.03) 
+
+          const speed = isMobile
+            ? (isEven ? -0.05 : -0.03)
             : (isEven ? -0.2 : -0.12);
-          
-          const initialPushDown = isEven 
-            ? (isMobile ? 50 : 150) 
+
+          const initialPushDown = isEven
+            ? (isMobile ? 50 : 150)
             : (isMobile ? 20 : 50);
 
           const translateValue = (relativeScroll * speed) + initialPushDown;
 
           return (
-            <div 
-              key={colIndex} 
-              className={`${hiddenOnMobile} flex flex-col gap-2 md:gap-4 transition-transform duration-100 ease-out will-change-transform ${isEven ? 'pt-12 md:pt-24' : ''}`} 
+            <div
+              key={colIndex}
+              className={`${hiddenOnMobile} flex flex-col gap-2 md:gap-4 transition-transform duration-100 ease-out will-change-transform ${isEven ? 'pt-12 md:pt-24' : ''}`}
               style={{ transform: `translateY(${translateValue}px)` }}
             >
               {colImages.map((src, imgIndex) => (
@@ -1140,101 +1187,444 @@ const ContactPage = () => {
 
 
 
+const HotelCard = ({ hotel }) => {
+  const navigate = useNavigate(); // 2. Initialize the hook
+
+  // --- SAFETY CHECK ---
+  const images = (hotel.images && hotel.images.length > 0)
+    ? hotel.images
+    : ["https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80"];
+
+  const [currentImgIndex, setCurrentImgIndex] = useState(0);
+
+  const nextImage = (e) => {
+    e.stopPropagation();
+    setCurrentImgIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const prevImage = (e) => {
+    e.stopPropagation();
+    setCurrentImgIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const hasMultipleImages = images.length > 1;
+
+  // 3. Define navigation handler
+  const handleCheckAvailability = () => {
+    navigate('/contact');
+  };
+
+  return (
+    <div className="bg-white rounded-xl md:rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition duration-300 flex flex-col group relative">
+
+      {/* ... (Image Carousel Section remains unchanged) ... */}
+      <div className="relative h-36 md:h-64 overflow-hidden bg-gray-200">
+        <img
+          src={images[currentImgIndex]}
+          alt={hotel.name}
+          className="w-full h-full object-cover transition duration-500"
+        />
+        <div className="absolute top-2 right-2 md:top-4 md:right-4 bg-white/90 backdrop-blur-sm px-2 py-0.5 md:px-3 md:py-1 rounded-full text-[10px] md:text-xs font-bold text-blue-800 shadow-sm z-10">
+          {hotel.city}
+        </div>
+        {hasMultipleImages && (
+          <>
+            <button onClick={prevImage} className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-1 rounded-full backdrop-blur-sm transition opacity-0 group-hover:opacity-100 md:opacity-0 md:group-hover:opacity-100 z-20">
+              <ChevronLeft size={16} />
+            </button>
+            <button onClick={nextImage} className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-1 rounded-full backdrop-blur-sm transition opacity-0 group-hover:opacity-100 md:opacity-0 md:group-hover:opacity-100 z-20">
+              <ChevronRight size={16} />
+            </button>
+            <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-1.5 z-20">
+              {images.map((_, idx) => (
+                <div key={idx} className={`w-1.5 h-1.5 rounded-full shadow-sm transition-all ${idx === currentImgIndex ? 'bg-white scale-110' : 'bg-white/50'}`} />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+
+      {/* --- CARD BODY --- */}
+      <div className="p-3 md:p-6 flex flex-col flex-grow">
+
+        {/* Heading & Rating */}
+        <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-1 md:mb-2 gap-1">
+          <h3 className="text-sm md:text-xl font-bold text-gray-900 leading-tight line-clamp-1">{hotel.name}</h3>
+          <div className="flex items-center bg-yellow-50 px-1.5 py-0.5 rounded-md self-start md:self-auto">
+            <Star size={10} className="text-yellow-500 fill-current md:w-3.5 md:h-3.5" />
+            <span className="text-[10px] md:text-xs font-bold text-yellow-700 ml-1">{hotel.rating}</span>
+          </div>
+        </div>
+
+        {/* Location */}
+        <p className="text-gray-500 text-[10px] md:text-sm mb-3 md:mb-6 flex items-center line-clamp-1">
+          <MapPin size={10} className="mr-1 md:w-3.5 md:h-3.5" /> {hotel.location}
+        </p>
+
+        {/* Amenities */}
+        <div className="flex flex-wrap gap-1 md:gap-2 mb-3 md:mb-8">
+          {hotel.amenities && hotel.amenities.slice(0, 2).map((amenity, idx) => (
+            <span key={idx} className="bg-gray-100 text-gray-600 text-[9px] md:text-xs px-2 py-1 rounded-md font-medium whitespace-nowrap">
+              {amenity}
+            </span>
+          ))}
+          {hotel.amenities && hotel.amenities.length > 2 && (
+            <span className="bg-gray-100 text-gray-600 text-[9px] md:text-xs px-2 py-1 rounded-md font-medium md:hidden">
+              +1
+            </span>
+          )}
+          {hotel.amenities && hotel.amenities.length > 2 && (
+            <span className="hidden md:inline-flex bg-gray-100 text-gray-600 text-xs px-3 py-1.5 rounded-md font-medium">
+              {hotel.amenities[2]}
+            </span>
+          )}
+        </div>
+
+        {/* Footer */}
+        <div className="mt-auto flex flex-col md:flex-row md:items-center justify-between pt-3 md:pt-6 border-t border-gray-100 gap-3 md:gap-0">
+          <div>
+            <span className="text-[10px] md:text-xs text-gray-400 block">From</span>
+            <div className="flex items-baseline">
+              <span className="text-base md:text-2xl font-bold text-blue-600">{hotel.price}</span>
+              <span className="text-gray-400 text-[10px] md:text-sm ml-1">/night</span>
+            </div>
+          </div>
+
+          {/* 4. Updated Button with onClick Handler */}
+          <button
+            onClick={handleCheckAvailability}
+            className="bg-blue-600 text-white w-full md:w-auto px-4 py-2 md:px-6 md:py-2.5 rounded-lg md:rounded-xl text-xs md:text-sm font-semibold hover:bg-gray-900 transition shadow-md"
+          >
+            Check Availability
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// --- MAIN PAGE COMPONENT ---
 const HotelsPage = () => {
   const [activeFilter, setActiveFilter] = useState('All');
 
-  // Mock Hotel Data
+  // Full Hotel Data List (With 'images' array for Carousel support)
   const hotels = [
+    // --- MAKKAH HOTELS ---
     {
       id: 1,
-      name: "Grand Makkah Hotel",
-      location: "Ajyad St, Makkah",
+      name: "Swissotel Makkah",
+      city: "Makkah",
+      location: "Abraj Al Bait",
       rating: 4.8,
-      price: "$150",
-      category: "Luxury",
-      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80",
-      amenities: ["Free Wifi", "Breakfast", "Shuttle"]
+      price: "$210",
+      // DEMO: This hotel has multiple images to test the carousel
+      images: [
+        hotel35,
+        hotel36
+      ],
+      amenities: ["Haram View", "Direct Access", "5 Star"]
     },
     {
       id: 2,
-      name: "Pullman ZamZam",
-      location: "Abraj Al Bait, Makkah",
-      rating: 4.9,
-      price: "$220",
-      category: "Luxury",
-      image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80",
-      amenities: ["Kaaba View", "5 Star", "Gym"]
+      name: "Swiss Al Maqam",
+      city: "Makkah",
+      location: "Abraj Al Bait",
+      rating: 4.7,
+      price: "$195",
+      images: [hotel33, hotel34],
+      amenities: ["Kaaba View", "Dining", "Luxury"]
     },
     {
       id: 3,
-      name: "Elaf Kinda Hotel",
-      location: "Al Misfalah, Makkah",
-      rating: 4.5,
-      price: "$90",
-      category: "Budget",
-      image: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&q=80",
-      amenities: ["Close to Haram", "Restaurant"]
+      name: "Pullman Zamzam",
+      city: "Makkah",
+      location: "Abraj Al Bait",
+      rating: 4.7,
+      price: "$180",
+      images: [hotel30, hotel31],
+      amenities: ["Clock Tower", "Buffet", "Wifi"]
     },
     {
       id: 4,
-      name: "Swissotel Al Maqam",
-      location: "King Abdul Aziz, Makkah",
-      rating: 4.7,
-      price: "$180",
-      category: "Family",
-      image: "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&q=80",
-      amenities: ["Family Suites", "Mall Access"]
+      name: "Hyatt Regency",
+      city: "Makkah",
+      location: "Jabal Omar",
+      rating: 4.9,
+      price: "$230",
+      images: [hotel22, hotel23],
+      amenities: ["Luxury Suites", "Gym", "Spa"]
     },
     {
       id: 5,
-      name: "Anjum Hotel",
-      location: "Jabal Al Kaaba, Makkah",
+      name: "Makkah Hotel & Towers",
+      city: "Makkah",
+      location: "Ibrahim Al Khalil",
       rating: 4.6,
-      price: "$110",
-      category: "Family",
-      image: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&q=80",
-      amenities: ["Kids Area", "Buffet", "Parking"]
+      price: "$160",
+      images: [hotel26],
+      amenities: ["Close to Haram", "Shopping", "Family"]
     },
     {
       id: 6,
-      name: "Ibis Styles",
-      location: "Al Aziziyah, Makkah",
+      name: "Hilton Convention",
+      city: "Makkah",
+      location: "Jabal Omar",
+      rating: 4.8,
+      price: "$200",
+      images: [hotel20, hotel21],
+      amenities: ["Convention Ctr", "Shuttle", "View"]
+    },
+    {
+      id: 7,
+      name: "Address Jabal Omar",
+      city: "Makkah",
+      location: "Jabal Omar",
+      rating: 5.0,
+      price: "$350",
+      images: [hotel40],
+      amenities: ["Ultra Luxury", "Skybridge", "Dining"]
+    },
+    {
+      id: 8,
+      name: "Doubletree by Hilton",
+      city: "Makkah",
+      location: "Jabal Omar",
+      rating: 4.5,
+      price: "$140",
+      images: [hotel39, hotel5],
+      amenities: ["Warm Cookie", "Comfort", "Wifi"]
+    },
+    {
+      id: 9,
+      name: "Marriot Jabal Omar",
+      city: "Makkah",
+      location: "Jabal Omar",
+      rating: 4.7,
+      price: "$175",
+      images: [hotel27],
+      amenities: ["Modern", "Service", "Views"]
+    },
+    {
+      id: 10,
+      name: "Emaar Grand",
+      city: "Makkah",
+      location: "Al Misfalah",
       rating: 4.2,
-      price: "$60",
-      category: "Budget",
-      image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&q=80",
-      amenities: ["Free Transport", "Wifi"]
+      price: "$90",
+      images: [hotel15],
+      amenities: ["Budget Friendly", "Transport", "Clean"]
+    },
+    {
+      id: 11,
+      name: "Emaar Al Manar",
+      city: "Makkah",
+      location: "Ajyad",
+      rating: 4.0,
+      price: "$85",
+      images: [hotel8, hotel9, hotel10, hotel11],
+      amenities: ["Good Value", "Restaurant", "Wifi"]
+    },
+    {
+      id: 12,
+      name: "Emaar Andalusia",
+      city: "Makkah",
+      location: "Al Misfalah",
+      rating: 4.1,
+      price: "$80",
+      images: [hotel12, hotel13],
+      amenities: ["Economy", "24/7 Desk", "Cafe"]
+    },
+    {
+      id: 13,
+      name: "Al Shohada Hotel",
+      city: "Makkah",
+      location: "Ajyad",
+      rating: 4.5,
+      price: "$130",
+      images: [hotel2],
+      amenities: ["Walking Dist", "Luxury", "Meals"]
+    },
+    {
+      id: 14,
+      name: "Voco Makkah",
+      city: "Makkah",
+      location: "Ibrahim Al Khalil",
+      rating: 4.6,
+      price: "$155",
+      images: [hotel38],
+      amenities: ["Premium", "Shuttle", "Design"]
+    },
+
+    // --- MADINA HOTELS ---
+    {
+      id: 15,
+      name: "Elaf Taqwa",
+      city: "Madina",
+      location: "Central Area",
+      rating: 4.3,
+      price: "$100",
+      images: [hotel1],
+      amenities: ["Close to Rawdah", "Wifi", "Meals"]
+    },
+    {
+      id: 16,
+      name: "Elaf Taiba",
+      city: "Madina",
+      location: "Northern Central",
+      rating: 4.4,
+      price: "$110",
+      images: [hotel6, hotel7],
+      amenities: ["Comfort", "Cafe", "Service"]
+    },
+    {
+      id: 17,
+      name: "Maden Hotel",
+      city: "Madina",
+      location: "North Facing",
+      rating: 4.8,
+      price: "$220",
+      images: [hotel24],
+      amenities: ["Luxury", "Haram View", "Suites"]
+    },
+    {
+      id: 18,
+      name: "Emaar Royal",
+      city: "Madina",
+      location: "Northern Central",
+      rating: 4.5,
+      price: "$130",
+      images: [hotel17],
+      amenities: ["Royal Floor", "Dining", "Wifi"]
+    },
+    {
+      id: 19,
+      name: "Emaar Elite",
+      city: "Madina",
+      location: "Central Area",
+      rating: 4.2,
+      price: "$95",
+      images: [hotel14],
+      amenities: ["Modern", "Value", "Clean"]
+    },
+    {
+      id: 20,
+      name: "Emaar Mektan",
+      city: "Madina",
+      location: "South Central",
+      rating: 4.1,
+      price: "$90",
+      images: [hotel16],
+      amenities: ["Quiet", "Restaurant", "Shuttle"]
+    },
+    {
+      id: 21,
+      name: "Emaar Taiba",
+      city: "Madina",
+      location: "West Central",
+      rating: 4.0,
+      price: "$85",
+      images: [hotel19],
+      amenities: ["Budget", "Groups", "Lobby"]
+    },
+    {
+      id: 22,
+      name: "Dallah Taiba",
+      city: "Madina",
+      location: "South Facing",
+      rating: 4.7,
+      price: "$160",
+      images: [hotel3],
+      amenities: ["Heritage", "Hospitality", "Food"]
+    },
+    {
+      id: 23,
+      name: "Saja Al Madina",
+      city: "Madina",
+      location: "Northern Central",
+      rating: 4.4,
+      price: "$120",
+      images: [hotel32],
+      amenities: ["Modern Design", "Service", "Wifi"]
+    },
+    {
+      id: 24,
+      name: "Dar Al Taqwa",
+      city: "Madina",
+      location: "Main Gate",
+      rating: 4.9,
+      price: "$250",
+      images: [hotel4],
+      amenities: ["Gate 25", "Luxury", "VIP"]
+    },
+    {
+      id: 25,
+      name: "Millenium Al Aqeeq",
+      city: "Madina",
+      location: "Second Row",
+      rating: 4.6,
+      price: "$170",
+      images: [hotel29],
+      amenities: ["Premium", "Buffet", "Suites"]
+    },
+    {
+      id: 26,
+      name: "Makarem",
+      city: "Madina",
+      location: "East Side",
+      rating: 4.3,
+      price: "$105",
+      images: [hotel25],
+      amenities: ["Spacious", "Transport", "Meals"]
+    },
+    {
+      id: 27,
+      name: "Taiba Front",
+      city: "Madina",
+      location: "North Facing",
+      rating: 4.8,
+      price: "$210",
+      images: [hotel37],
+      amenities: ["Direct View", "Mall", "Luxury"]
+    },
+    {
+      id: 28,
+      name: "Maysan Al Harithia",
+      city: "Madina",
+      location: "Central Area",
+      rating: 4.5,
+      price: "$145",
+      images: [hotel28],
+      amenities: ["Elegant", "Comfort", "Service"]
     }
   ];
 
-  // Filter Logic
   const filteredHotels = activeFilter === 'All'
     ? hotels
-    : hotels.filter(hotel => hotel.category === activeFilter);
+    : hotels.filter(hotel => hotel.city === activeFilter);
 
-  const filters = ['All', 'Luxury', 'Family', 'Budget'];
+  const filters = ['All', 'Makkah', 'Madina'];
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col pt-32 pb-20">
       <div className="max-w-7xl mx-auto w-full px-4 md:px-6">
 
-        {/* 1. Header Section */}
+        {/* Header */}
         <div className="text-center mb-8 md:mb-12">
           <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
             Find Your Perfect Stay
           </h1>
           <p className="text-gray-600 text-sm md:text-lg max-w-2xl mx-auto">
-            Comfortable accommodations close to the Holy Haram. Choose from our curated selection of partner hotels.
+            Comfortable accommodations close to the Holy Haram. Choose from our curated selection of partner hotels in Makkah and Madina.
           </p>
         </div>
 
-        {/* 2. Filter Buttons */}
+        {/* Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-10 md:mb-16">
           {filters.map((filter) => (
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
-              className={`px-4 py-2 md:px-8 md:py-2.5 rounded-full text-xs md:text-base font-medium transition-all duration-300 ${activeFilter === filter
+              className={`px-6 py-2 md:px-8 md:py-2.5 rounded-full text-xs md:text-base font-medium transition-all duration-300 ${activeFilter === filter
                 ? 'bg-blue-600 text-white shadow-lg scale-105'
                 : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
                 }`}
@@ -1244,84 +1634,10 @@ const HotelsPage = () => {
           ))}
         </div>
 
-        {/* 3. Hotel Cards Grid 
-            - CHANGED: grid-cols-2 (Mobile) -> lg:grid-cols-3 (Desktop)
-            - CHANGED: Reduced gap on mobile (gap-3) vs desktop (gap-8)
-        */}
+        {/* Hotel Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
           {filteredHotels.map((hotel) => (
-            <div key={hotel.id} className="bg-white rounded-xl md:rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition duration-300 flex flex-col group">
-
-              {/* Image Placeholder 
-                  - CHANGED: Height is smaller on mobile (h-36) vs desktop (h-64)
-              */}
-              <div className="relative h-36 md:h-64 overflow-hidden">
-                <img
-                  src={hotel.image}
-                  alt={hotel.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition duration-700"
-                />
-                <div className="absolute top-2 right-2 md:top-4 md:right-4 bg-white/90 backdrop-blur-sm px-2 py-0.5 md:px-3 md:py-1 rounded-full text-[10px] md:text-xs font-bold text-blue-800 shadow-sm">
-                  {hotel.category}
-                </div>
-              </div>
-
-              {/* Card Body 
-                  - CHANGED: Reduced padding on mobile (p-3) vs desktop (p-6)
-              */}
-              <div className="p-3 md:p-6 flex flex-col flex-grow">
-                
-                {/* Heading & Rating */}
-                <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-1 md:mb-2 gap-1">
-                  <h3 className="text-sm md:text-xl font-bold text-gray-900 leading-tight line-clamp-1">{hotel.name}</h3>
-                  <div className="flex items-center bg-yellow-50 px-1.5 py-0.5 rounded-md self-start md:self-auto">
-                    <Star size={10} className="text-yellow-500 fill-current md:w-3.5 md:h-3.5" />
-                    <span className="text-[10px] md:text-xs font-bold text-yellow-700 ml-1">{hotel.rating}</span>
-                  </div>
-                </div>
-
-                {/* Description / Location */}
-                <p className="text-gray-500 text-[10px] md:text-sm mb-3 md:mb-6 flex items-center line-clamp-1">
-                  <MapPin size={10} className="mr-1 md:w-3.5 md:h-3.5" /> {hotel.location}
-                </p>
-
-                {/* Tags (Amenities) 
-                   - Hidden specific extra tags on mobile if needed, or kept small
-                */}
-                <div className="flex flex-wrap gap-1 md:gap-2 mb-3 md:mb-8">
-                  {hotel.amenities.slice(0, 2).map((amenity, idx) => (
-                    <span key={idx} className="bg-gray-100 text-gray-600 text-[9px] md:text-xs px-2 py-1 rounded-md font-medium whitespace-nowrap">
-                      {amenity}
-                    </span>
-                  ))}
-                  {/* Show +1 badge if more than 2 amenities on mobile to save space */}
-                  {hotel.amenities.length > 2 && (
-                     <span className="bg-gray-100 text-gray-600 text-[9px] md:text-xs px-2 py-1 rounded-md font-medium md:hidden">
-                       +1
-                     </span>
-                  )}
-                  <span className="hidden md:inline-flex bg-gray-100 text-gray-600 text-xs px-3 py-1.5 rounded-md font-medium">
-                     {hotel.amenities[2]}
-                  </span>
-                </div>
-
-                {/* Footer: Price & Button 
-                    - CHANGED: Layout is tighter on mobile
-                */}
-                <div className="mt-auto flex flex-col md:flex-row md:items-center justify-between pt-3 md:pt-6 border-t border-gray-100 gap-3 md:gap-0">
-                  <div>
-                    <span className="text-[10px] md:text-xs text-gray-400 block">From</span>
-                    <div className="flex items-baseline">
-                      <span className="text-base md:text-2xl font-bold text-blue-600">{hotel.price}</span>
-                      <span className="text-gray-400 text-[10px] md:text-sm ml-1">/night</span>
-                    </div>
-                  </div>
-                  <button className="bg-gray-900 text-white w-full md:w-auto px-4 py-2 md:px-6 md:py-2.5 rounded-lg md:rounded-xl text-xs md:text-sm font-semibold hover:bg-blue-600 transition shadow-md">
-                    View
-                  </button>
-                </div>
-              </div>
-            </div>
+            <HotelCard key={hotel.id} hotel={hotel} />
           ))}
         </div>
 
@@ -1532,6 +1848,8 @@ const TestimonialsPage = () => {
     </div>
   );
 
+
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col pt-32 pb-20">
       <style>{`
@@ -1572,7 +1890,8 @@ const TestimonialsPage = () => {
         </div>
 
         <div className="mt-16 text-center">
-          <button className="bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-700 transition shadow-lg flex items-center gap-2 mx-auto">
+          <button onClick={() => navigate('/contact')}
+            className="bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-700 transition shadow-lg flex items-center gap-2 mx-auto">
             Book Your Trip Now <ArrowRight size={18} />
           </button>
         </div>
@@ -1948,6 +2267,8 @@ export default function App() {
           <Route path="/services" element={<ServicesPage />} />
         </Routes>
 
+
+        <WhatsAppButton />
         {/* Footer stays visible on all pages */}
         <Footer />
       </div>

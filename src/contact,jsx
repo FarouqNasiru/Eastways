@@ -175,23 +175,43 @@ const ContactPage = () => {
 
           {/* Right Side - Form (Matches Wireframe Light Section) */}
           <div className="w-full md:w-7/12 p-10 md:p-14 bg-white">
-            <form className="space-y-8">
-              
+            {/*
+              FormSubmit configuration:
+              - Replace the email in the `action` URL with the destination email you want to receive messages at.
+              - Replace the `_next` value with a real thank-you URL (or a local route) if desired.
+            */}
+            <form
+              className="space-y-8"
+              action="https://formsubmit.co/support@goeastways.com"
+              method="POST"
+            >
+              {/* FormSubmit hidden fields */}
+              <input type="hidden" name="_subject" value="New contact from Go Eastways website" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_next" value="https://example.com/thank-you" />
+              <input type="hidden" name="_template" value="table" />
+
+              {/* Honeypot field (hidden to users) */}
+              <input type="text" name="_honey" className="hidden" />
+
               {/* Row 1: Two Inputs */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-2">
                   <label className="text-sm font-semibold text-gray-700">First Name</label>
-                  <input 
-                    type="text" 
-                    placeholder="John" 
+                  <input
+                    type="text"
+                    name="first_name"
+                    placeholder="John"
+                    required
                     className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-4 outline-none transition"
                   />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-semibold text-gray-700">Last Name</label>
-                  <input 
-                    type="text" 
-                    placeholder="Doe" 
+                  <input
+                    type="text"
+                    name="last_name"
+                    placeholder="Doe"
                     className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-4 outline-none transition"
                   />
                 </div>
@@ -200,9 +220,11 @@ const ContactPage = () => {
               {/* Row 2: Email */}
               <div className="space-y-2">
                 <label className="text-sm font-semibold text-gray-700">Email Address</label>
-                <input 
-                  type="email" 
-                  placeholder="john@example.com" 
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="john@example.com"
+                  required
                   className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-4 outline-none transition"
                 />
               </div>
@@ -211,7 +233,10 @@ const ContactPage = () => {
               <div className="space-y-2">
                 <label className="text-sm font-semibold text-gray-700">Topic</label>
                 <div className="relative">
-                  <select className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-4 outline-none appearance-none transition cursor-pointer">
+                  <select
+                    name="topic"
+                    className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-4 outline-none appearance-none transition cursor-pointer"
+                  >
                     <option>General Inquiry</option>
                     <option>Booking Support</option>
                     <option>Visa Assistance</option>
@@ -224,16 +249,18 @@ const ContactPage = () => {
               {/* Row 4: Textarea */}
               <div className="space-y-2">
                 <label className="text-sm font-semibold text-gray-700">Message</label>
-                <textarea 
-                  rows="4" 
-                  placeholder="Tell us how we can help..." 
+                <textarea
+                  rows="4"
+                  name="message"
+                  placeholder="Tell us how we can help..."
+                  required
                   className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-4 outline-none transition resize-none"
                 ></textarea>
               </div>
 
               {/* Submit Button */}
-              <button 
-                type="button" 
+              <button
+                type="submit"
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition duration-300 flex items-center justify-center gap-2"
               >
                 Send Message <Send size={18} />
