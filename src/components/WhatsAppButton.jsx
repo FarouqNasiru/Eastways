@@ -3,7 +3,7 @@ import React from 'react';
 const WhatsAppButton = () => {
   // REPLACE THIS with your actual phone number (include country code, no + or dashes)
   // Example: 966500000000 for Saudi Arabia
-  const phoneNumber = "1234567890"; 
+  const phoneNumber = "447493771659"; 
   const message = "Hello! I would like to inquire about your Umrah services."; // Optional pre-filled message
 
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;

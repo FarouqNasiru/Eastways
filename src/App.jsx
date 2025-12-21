@@ -1106,12 +1106,48 @@ const Home = () => (
 
 // The "Contact" Page Content
 const ContactPage = () => {
+  // --- 2. FORM STATE MANAGEMENT ---
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    topic: 'General Inquiry',
+    message: ''
+  });
+
+  // Handle Input Changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  // --- 3. WHATSAPP SUBMIT LOGIC ---
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // OWNER PHONE NUMBER (International format, no + or -)
+    // Based on your footer: +44 74 9377 1659 -> 447493771659
+    const phoneNumber = "447493771659"; 
+
+    // Construct the message
+    const whatsappMessage = 
+      `*New Website Inquiry* 🕌%0A%0A` +
+      `*Name:* ${formData.firstName} ${formData.lastName}%0A` +
+      `*Email:* ${formData.email}%0A` +
+      `*Topic:* ${formData.topic}%0A` +
+      `*Message:* ${formData.message}`;
+
+    // Create the URL
+    const url = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
+
+    // Open WhatsApp in new tab
+    window.open(url, '_blank');
+  };
+
   return (
-    // Reduced top padding (pt-24) to pull the page up
     <div className="min-h-screen bg-gray-50 flex flex-col pt-24 pb-10">
 
       <div className="flex-grow px-4 md:px-8 flex items-center justify-center">
-        {/* Removed fixed min-height, added max-w-5xl for a slightly narrower look */}
         <div className="w-full max-w-5xl bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
 
           {/* Left Side - Info Panel */}
@@ -1122,21 +1158,18 @@ const ContactPage = () => {
             <div className="relative z-10">
               <h1 className="text-2xl md:text-3xl font-bold mb-4">Contact Information</h1>
               <p className="text-gray-400 text-sm leading-relaxed mb-8">
-                Fill up the form and our Team will get back to you within 24 hours.
+                Fill up the form and it will open a WhatsApp chat with our team immediately.
               </p>
 
-              {/* Contact Details */}
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 text-blue-400"><Phone size={16} /></div>
                   <div><h3 className="font-semibold text-sm mb-0.5">Phone</h3><p className="text-gray-300 text-xs">+44 74 9377 1659</p></div>
                 </div>
-
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 text-blue-400"><Mail size={16} /></div>
                   <div><h3 className="font-semibold text-sm mb-0.5">Email</h3><p className="text-gray-300 text-xs">support@goeastways.com</p></div>
                 </div>
-
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 text-blue-400"><MapPin size={16} /></div>
                   <div><h3 className="font-semibold text-sm mb-0.5">Address</h3><p className="text-gray-300 text-xs">123 Sacred Road, View District<br />London, UK</p></div>
@@ -1144,57 +1177,72 @@ const ContactPage = () => {
               </div>
             </div>
 
-            {/* Social Icons - UPDATED */}
             <div className="flex gap-3 mt-8 relative z-10">
-              {/* Instagram - Linked */}
               <a 
                 href="https://www.instagram.com/goeastways?igsh=MW8wYTFjNzBwcjJyYw==" 
-                target="_blank" 
-                rel="noopener noreferrer"
+                target="_blank" rel="noopener noreferrer" 
                 className="w-8 h-8 rounded-full bg-black/30 hover:bg-blue-600 transition cursor-pointer flex items-center justify-center text-white"
               >
                 <Instagram size={14} />
               </a>
-
-              {/* Facebook - Placeholder (Change div to 'a' if needed) */}
-              <div className="w-8 h-8 rounded-full bg-black/30 hover:bg-blue-600 transition cursor-pointer flex items-center justify-center text-white">
-                <Facebook size={14} />
-              </div>
-
-              {/* Youtube - Placeholder */}
-              <div className="w-8 h-8 rounded-full bg-black/30 hover:bg-blue-600 transition cursor-pointer flex items-center justify-center text-white">
-                <Youtube size={14} />
-              </div>
+              <div className="w-8 h-8 rounded-full bg-black/30 hover:bg-blue-600 transition cursor-pointer flex items-center justify-center text-white"><Facebook size={14} /></div>
+              <div className="w-8 h-8 rounded-full bg-black/30 hover:bg-blue-600 transition cursor-pointer flex items-center justify-center text-white"><Youtube size={14} /></div>
             </div>
           </div>
 
           {/* Right Side - Form */}
           <div className="w-full md:w-7/12 p-8 bg-white">
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={handleSubmit}>
 
               {/* Row 1 */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-1">
                   <label className="text-xs font-semibold text-gray-700">First Name</label>
-                  <input type="text" placeholder="John" className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-3 outline-none transition" />
+                  <input 
+                    name="firstName" // Important: matches state key
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    type="text" 
+                    placeholder="John" 
+                    className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-3 outline-none transition" 
+                  />
                 </div>
                 <div className="space-y-1">
                   <label className="text-xs font-semibold text-gray-700">Last Name</label>
-                  <input type="text" placeholder="Doe" className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-3 outline-none transition" />
+                  <input 
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    type="text" 
+                    placeholder="Doe" 
+                    className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-3 outline-none transition" 
+                  />
                 </div>
               </div>
 
               {/* Row 2 */}
               <div className="space-y-1">
                 <label className="text-xs font-semibold text-gray-700">Email Address</label>
-                <input type="email" placeholder="john@example.com" className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-3 outline-none transition" />
+                <input 
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  type="email" 
+                  placeholder="john@example.com" 
+                  className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-3 outline-none transition" 
+                />
               </div>
 
               {/* Row 3 */}
               <div className="space-y-1">
                 <label className="text-xs font-semibold text-gray-700">Topic</label>
                 <div className="relative">
-                  <select className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-3 outline-none appearance-none transition cursor-pointer">
+                  <select 
+                    name="topic"
+                    value={formData.topic}
+                    onChange={handleChange}
+                    className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-3 outline-none appearance-none transition cursor-pointer"
+                  >
                     <option>General Inquiry</option>
                     <option>Booking Support</option>
                     <option>Visa Assistance</option>
@@ -1206,22 +1254,28 @@ const ContactPage = () => {
               {/* Row 4 */}
               <div className="space-y-1">
                 <label className="text-xs font-semibold text-gray-700">Message</label>
-                <textarea rows="3" placeholder="Tell us how we can help..." className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-3 outline-none transition resize-none"></textarea>
+                <textarea 
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows="3" 
+                  placeholder="Tell us how we can help..." 
+                  className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-3 outline-none transition resize-none"
+                ></textarea>
               </div>
 
               {/* Submit Button */}
               <button
-                type="button"
+                type="submit" // Changed from 'button' to 'submit'
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg shadow-lg hover:shadow-xl transition duration-300 flex items-center justify-center gap-2 text-sm mt-2"
               >
-                Send Message <Send size={16} />
+                Send to WhatsApp <Send size={16} />
               </button>
             </form>
           </div>
 
         </div>
       </div>
-
     </div>
   );
 };
@@ -1234,8 +1288,6 @@ const ContactPage = () => {
 
 
 const HotelCard = ({ hotel, index }) => {
-  const navigate = useNavigate();
-  
   // --- 1. SCROLL ANIMATION LOGIC ---
   const [isVisible, setIsVisible] = useState(false);
   const cardRef = useRef(null);
@@ -1273,8 +1325,17 @@ const HotelCard = ({ hotel, index }) => {
 
   const hasMultipleImages = images.length > 1;
 
+  // --- 3. WHATSAPP HANDLER ---
   const handleCheckAvailability = () => {
-    navigate('/contact');
+    // 1. Define the phone number
+    const phoneNumber = "4474937716559";
+    
+    // 2. Create a dynamic message including the hotel name
+    const message = `Hello! I am interested in checking availability for *${hotel.name}* in ${hotel.city}.`;
+    
+    // 3. Open WhatsApp
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
   };
 
   return (
@@ -1346,11 +1407,10 @@ const HotelCard = ({ hotel, index }) => {
           )}
         </div>
 
-        {/* --- FOOTER (Updated Line Height) --- */}
+        {/* --- FOOTER --- */}
         <div className="mt-auto flex flex-row items-center justify-between pt-3 md:pt-6 border-t border-gray-100 gap-3">
           <div>
             <span className="text-[10px] md:text-xs text-gray-400 block mb-0.5">Rate</span>
-            {/* CHANGED: leading-none reduces the space between lines */}
             <span className="text-xs md:text-sm font-medium text-blue-600 leading-none block">
               Inquire<br />for price
             </span>
