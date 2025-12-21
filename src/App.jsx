@@ -13,7 +13,7 @@ import g1 from './assets/images/g1.jpg';
 import g2 from './assets/images/g2.jpg';
 import g3 from './assets/images/g3.jpg';
 import g4 from './assets/images/g4.jpg';
-import g5 from './assets/images/g5.jpg';
+import g5 from './assets/images/makkah2.jpg';
 import g6 from './assets/images/g6.jpg';
 import g7 from './assets/images/g7.jpg';
 import g8 from './assets/images/g8.jpg';
@@ -69,6 +69,7 @@ import hotel37 from './assets/images/tiaba front.jpg';
 import hotel38 from './assets/images/voco1.webp';
 import hotel39 from './assets/images/doubletree-by-hilton.jpg';
 import hotel40 from './assets/images/address-jabal-omar1.jpg';
+import supportAgent from './assets/images/support-agent.jpg';
 
 
 
@@ -192,19 +193,19 @@ const Footer = () => (
     <div className="max-w-7xl mx-auto">
       {/* Grid Layout: 3 Columns (Brand, Links, Contact) */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20 border-b border-gray-800 pb-16">
-        
+
         {/* 1. Brand Section */}
         <div className="space-y-6">
-          <h3 className="text-3xl font-serif font-bold tracking-tight text-white">GoEastWays</h3>
+          <h3 className="text-3xl font-serif font-bold tracking-tight text-white">EastWays</h3>
           <p className="text-gray-400 text-sm leading-7">
             Providing trusted, comfortable, and spiritually uplifting travel experiences. Specializing in Umrah packages and luxury hotel bookings.
           </p>
           <div className="flex space-x-4">
-            
+
             {/* INSTAGRAM LINKED HERE */}
-            <a 
-              href="https://www.instagram.com/goeastways?igsh=MW8wYTFjNzBwcjJyYw==" 
-              target="_blank" 
+            <a
+              href="https://www.instagram.com/goeastways?igsh=MW8wYTFjNzBwcjJyYw=="
+              target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer group"
             >
@@ -256,7 +257,7 @@ const Footer = () => (
 
       {/* Bottom Footer */}
       <div className="pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-        <p>© 2024 GoEastWays. All rights reserved.</p>
+        <p>© 2025 GoEastWays. All rights reserved.</p>
         <div className="flex space-x-6 mt-4 md:mt-0">
           <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
           <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
@@ -324,21 +325,21 @@ const Hero = () => {
 
       {/* 1. DEFINE ANIMATION STYLES */}
       <style>{`
-      @keyframes fadeUp {
-        from { 
-          opacity: 0; 
-          transform: translateY(30px); 
-        }
-        to { 
-          opacity: 1; 
-          transform: translateY(0); 
-        }
-      }
-      .animate-fade-up {
-        animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-        opacity: 0;
-      }
-    `}</style>
+      @keyframes fadeUp {
+        from { 
+          opacity: 0; 
+          transform: translateY(30px); 
+        }
+        to { 
+          opacity: 1; 
+          transform: translateY(0); 
+        }
+      }
+      .animate-fade-up {
+        animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        opacity: 0;
+      }
+    `}</style>
 
       {/* Main Container - Added w-full and px-4 for safety */}
       <div className="z-10 w-full max-w-4xl mx-auto mt-24 px-4 md:px-6">
@@ -381,7 +382,7 @@ const Hero = () => {
             onClick={() => navigate('/contact')}
             className="w-full sm:w-auto px-6 py-3 rounded-2xl font-semibold hover:scale-105 shadow-lg"
           >
-            <Phone size={16} /> Schedule a 30mins call
+            <Phone size={16} /> Contact Us for Bookings
           </GradientButton>
         </div>
 
@@ -407,6 +408,7 @@ const Hero = () => {
     </header>
   );
 };
+
 
 const FeatureSection = ({ title, desc, image, reverse, iconOverlay, textOverlay, className, imageSizeClass, customVisual }) => {
 
@@ -861,7 +863,7 @@ const Gallery = () => {
           className={`text-gray-600 max-w-xl mx-auto text-lg leading-relaxed opacity-0 ${isTextVisible ? 'animate-fade-up' : ''}`}
           style={{ animationDelay: '0.2s' }}
         >
-          Reliable support before || during, and after your journey || Exclusive hotel rates through strong industry partnerships || Transparent pricing with no hidden costs || Experience handling small and large Umrah groups || Trusted by travelers worldwide
+          Reliable support before during, and after your journey || Exclusive hotel rates through strong industry partnerships || Transparent pricing with no hidden costs || Experience handling small and large Umrah groups || Trusted by travelers worldwide
         </p>
       </div>
 
@@ -1127,10 +1129,10 @@ const ContactPage = () => {
 
     // OWNER PHONE NUMBER (International format, no + or -)
     // Based on your footer: +44 74 9377 1659 -> 447493771659
-    const phoneNumber = "447493771659"; 
+    const phoneNumber = "447493771659";
 
     // Construct the message
-    const whatsappMessage = 
+    const whatsappMessage =
       `*New Website Inquiry* 🕌%0A%0A` +
       `*Name:* ${formData.firstName} ${formData.lastName}%0A` +
       `*Email:* ${formData.email}%0A` +
@@ -1178,9 +1180,9 @@ const ContactPage = () => {
             </div>
 
             <div className="flex gap-3 mt-8 relative z-10">
-              <a 
-                href="https://www.instagram.com/goeastways?igsh=MW8wYTFjNzBwcjJyYw==" 
-                target="_blank" rel="noopener noreferrer" 
+              <a
+                href="https://www.instagram.com/goeastways?igsh=MW8wYTFjNzBwcjJyYw=="
+                target="_blank" rel="noopener noreferrer"
                 className="w-8 h-8 rounded-full bg-black/30 hover:bg-blue-600 transition cursor-pointer flex items-center justify-center text-white"
               >
                 <Instagram size={14} />
@@ -1198,24 +1200,24 @@ const ContactPage = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-1">
                   <label className="text-xs font-semibold text-gray-700">First Name</label>
-                  <input 
+                  <input
                     name="firstName" // Important: matches state key
                     value={formData.firstName}
                     onChange={handleChange}
-                    type="text" 
-                    placeholder="John" 
-                    className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-3 outline-none transition" 
+                    type="text"
+                    placeholder="John"
+                    className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-3 outline-none transition"
                   />
                 </div>
                 <div className="space-y-1">
                   <label className="text-xs font-semibold text-gray-700">Last Name</label>
-                  <input 
+                  <input
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleChange}
-                    type="text" 
-                    placeholder="Doe" 
-                    className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-3 outline-none transition" 
+                    type="text"
+                    placeholder="Doe"
+                    className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-3 outline-none transition"
                   />
                 </div>
               </div>
@@ -1223,13 +1225,13 @@ const ContactPage = () => {
               {/* Row 2 */}
               <div className="space-y-1">
                 <label className="text-xs font-semibold text-gray-700">Email Address</label>
-                <input 
+                <input
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  type="email" 
-                  placeholder="john@example.com" 
-                  className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-3 outline-none transition" 
+                  type="email"
+                  placeholder="john@example.com"
+                  className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-3 outline-none transition"
                 />
               </div>
 
@@ -1237,7 +1239,7 @@ const ContactPage = () => {
               <div className="space-y-1">
                 <label className="text-xs font-semibold text-gray-700">Topic</label>
                 <div className="relative">
-                  <select 
+                  <select
                     name="topic"
                     value={formData.topic}
                     onChange={handleChange}
@@ -1254,12 +1256,12 @@ const ContactPage = () => {
               {/* Row 4 */}
               <div className="space-y-1">
                 <label className="text-xs font-semibold text-gray-700">Message</label>
-                <textarea 
+                <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  rows="3" 
-                  placeholder="Tell us how we can help..." 
+                  rows="3"
+                  placeholder="Tell us how we can help..."
                   className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-3 outline-none transition resize-none"
                 ></textarea>
               </div>
@@ -1307,8 +1309,8 @@ const HotelCard = ({ hotel, index }) => {
   }, []);
 
   // --- 2. CAROUSEL LOGIC ---
-  const images = (hotel.images && hotel.images.length > 0) 
-    ? hotel.images 
+  const images = (hotel.images && hotel.images.length > 0)
+    ? hotel.images
     : ["https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80"];
 
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
@@ -1329,24 +1331,24 @@ const HotelCard = ({ hotel, index }) => {
   const handleCheckAvailability = () => {
     // 1. Define the phone number
     const phoneNumber = "4474937716559";
-    
+
     // 2. Create a dynamic message including the hotel name
     const message = `Hello! I am interested in checking availability for *${hotel.name}* in ${hotel.city}.`;
-    
+
     // 3. Open WhatsApp
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
 
   return (
-    <div 
+    <div
       ref={cardRef}
       className={`bg-white rounded-xl md:rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-700 ease-out flex flex-col group relative transform
         ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}
       `}
       style={{ transitionDelay: `${index * 50}ms` }}
     >
-      
+
       {/* --- IMAGE CAROUSEL --- */}
       <div className="relative h-36 md:h-64 overflow-hidden bg-gray-200">
         <img
@@ -1376,7 +1378,7 @@ const HotelCard = ({ hotel, index }) => {
 
       {/* --- CARD BODY --- */}
       <div className="p-3 md:p-6 flex flex-col flex-grow">
-        
+
         <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-1 md:mb-2 gap-1">
           <h3 className="text-sm md:text-xl font-bold text-gray-900 leading-tight line-clamp-1">{hotel.name}</h3>
           <div className="flex items-center bg-yellow-50 px-1.5 py-0.5 rounded-md self-start md:self-auto">
@@ -1396,9 +1398,9 @@ const HotelCard = ({ hotel, index }) => {
             </span>
           ))}
           {hotel.amenities && hotel.amenities.length > 2 && (
-             <span className="bg-gray-100 text-gray-600 text-[9px] md:text-xs px-2 py-1 rounded-md font-medium md:hidden">
-               +1
-             </span>
+            <span className="bg-gray-100 text-gray-600 text-[9px] md:text-xs px-2 py-1 rounded-md font-medium md:hidden">
+              +1
+            </span>
           )}
           {hotel.amenities && hotel.amenities.length > 2 && (
             <span className="hidden md:inline-flex bg-gray-100 text-gray-600 text-xs px-3 py-1.5 rounded-md font-medium">
@@ -1415,8 +1417,8 @@ const HotelCard = ({ hotel, index }) => {
               Inquire<br />for price
             </span>
           </div>
-          
-          <button 
+
+          <button
             onClick={handleCheckAvailability}
             className="bg-blue-600 text-white px-4 py-2 md:px-6 md:py-2.5 rounded-lg md:rounded-xl text-xs md:text-sm font-semibold hover:bg-gray-900 transition shadow-md whitespace-nowrap"
           >
@@ -1438,9 +1440,9 @@ const HotelsPage = () => {
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
-      if(entry.isIntersecting) { setHeaderVisible(true); observer.disconnect(); }
+      if (entry.isIntersecting) { setHeaderVisible(true); observer.disconnect(); }
     }, { threshold: 0.1 });
-    if(headerRef.current) observer.observe(headerRef.current);
+    if (headerRef.current) observer.observe(headerRef.current);
     return () => observer.disconnect();
   }, []);
 
@@ -1741,7 +1743,7 @@ const HotelsPage = () => {
       <div className="max-w-7xl mx-auto w-full px-4 md:px-6">
 
         {/* Header with Animation */}
-        <div 
+        <div
           ref={headerRef}
           className={`text-center mb-8 md:mb-12 transition-all duration-1000 ease-out transform ${headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
@@ -1754,7 +1756,7 @@ const HotelsPage = () => {
         </div>
 
         {/* Filter Buttons with Animation */}
-        <div 
+        <div
           className={`flex flex-wrap justify-center gap-2 md:gap-4 mb-10 md:mb-16 transition-all duration-1000 ease-out delay-200 transform ${headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
           {filters.map((filter) => (
@@ -1847,16 +1849,16 @@ const FAQItem = ({ faq, index, isOpen, toggle }) => {
 const FAQPage = () => {
   const navigate = useNavigate();
   const [openIndex, setOpenIndex] = useState(null);
-  
+
   // Header Animation State
   const [headerVisible, setHeaderVisible] = useState(false);
   const headerRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
-      if(entry.isIntersecting) { setHeaderVisible(true); observer.disconnect(); }
+      if (entry.isIntersecting) { setHeaderVisible(true); observer.disconnect(); }
     }, { threshold: 0.1 });
-    if(headerRef.current) observer.observe(headerRef.current);
+    if (headerRef.current) observer.observe(headerRef.current);
     return () => observer.disconnect();
   }, []);
 
@@ -1889,7 +1891,7 @@ const FAQPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col pt-32 pb-20 overflow-x-hidden">
-      
+
       {/* --- CSS ANIMATIONS --- */}
       <style>{`
         @keyframes slideInLeft {
@@ -1912,7 +1914,7 @@ const FAQPage = () => {
       <div className="max-w-4xl mx-auto w-full px-6">
 
         {/* Heading Section (Fade Up) */}
-        <div 
+        <div
           ref={headerRef}
           className={`text-center mb-16 transition-all duration-1000 ease-out ${headerVisible ? 'animate-fade-up opacity-100' : 'opacity-0'}`}
         >
@@ -1927,12 +1929,12 @@ const FAQPage = () => {
         {/* Accordion List (Items slide in individually) */}
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <FAQItem 
-              key={index} 
-              index={index} 
-              faq={faq} 
-              isOpen={openIndex === index} 
-              toggle={toggleFAQ} 
+            <FAQItem
+              key={index}
+              index={index}
+              faq={faq}
+              isOpen={openIndex === index}
+              toggle={toggleFAQ}
             />
           ))}
         </div>
@@ -1940,7 +1942,7 @@ const FAQPage = () => {
         {/* Bottom CTA (Fade Up) */}
         <div className={`mt-16 text-center transition-all duration-1000 delay-500 ease-out ${headerVisible ? 'animate-fade-up opacity-100' : 'opacity-0'}`}>
           <p className="text-gray-500 mb-4">Still have questions?</p>
-          <button 
+          <button
             onClick={() => navigate('/contact')}
             className="bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-gray-900 transition shadow-lg"
           >
@@ -1963,49 +1965,73 @@ const TestimonialsPage = () => {
   const reviews = [
     {
       id: 1,
-      name: "Ahmed Al-Farsi",
-      role: "Business Traveler",
-      text: "The VIP service was impeccable. From the airport greeting to the hotel check-in, everything was handled with absolute professionalism.",
+      name: "Anonymous",
+      role: "Pilgrim",
+      text: "The stay was amazing Alhamdulillah. The moment I entered the hotel, the receptionist only took my name, and within three minutes, I was guided to my room. Everything went smoothly and quick. They also gave us an amazing view of the Clocktower in Makkah. It was also just 5 minutes away from Masjid al Haram.",
       rating: 5,
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80"
     },
     {
       id: 2,
-      name: "Fatima Zahra",
-      role: "Family Trip",
-      text: "Traveling with kids can be stressful, but Eastways made it a breeze. The hotel proximity to the Haram was a game changer for us.",
+      name: "Yousef Hassan",
+      role: "Pilgrim",
+      text: "I will definitely be booking this hotel again for my next trip in sha Allah, and will do that through EastWays again. The combination of low budget and the great service and experience make it definitely worth it to keep booking through you.",
       rating: 5,
       image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80"
     },
     {
       id: 3,
-      name: "Yusuf Khan",
-      role: "Group Leader",
-      text: "I have organized many group trips, but this was by far the smoothest. The visa processing speed was impressive.",
+      name: "Anonymous",
+      role: "Pilgrim",
+      text: "I recently booked a hotel through EastWays, and I must say, the experience was outstanding. The interface was easy to navigate, allowing me to compare multiple hotel options in minutes. What truly set it apart was the price. It offered the best rates compared to other booking platforms. No hidden fees, no last-minute surprises.",
       rating: 4,
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80"
     },
     {
       id: 4,
-      name: "Sarah Jenkins",
-      role: "Solo Traveler",
-      text: "As a convert traveling alone, I was nervous. The guides were so supportive and made me feel completely safe and welcome.",
+      name: "Balil Safi",
+      role: "Pilgrim",
+      text: "I saved a significant amount, making it the most cost-effective option without compromising on quality or convenience. Highly recommend for budget-conscious travelers seeking the best deals!",
       rating: 5,
       image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80"
     },
     {
       id: 5,
-      name: "Omar Abdullah",
+      name: "Anonymous",
       role: "Pilgrim",
-      text: "The spiritual guidance provided by the team added so much depth to our Umrah. It wasn't just logistics; it was a true journey.",
+      text: "If you're seeking the best hotel prices in Makkah and Marina, for Umrah or Hajj, I highly recommend Eastways. I've personally used their services a couple of times, and they've consistently offered me better rates than those found on sites like booking.comThe spiritual guidance provided by the team added so much depth to our Umrah. It wasn't just logistics; it was a true journey.",
       rating: 5,
       image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80"
     },
     {
       id: 6,
-      name: "Layla Hassan",
-      role: "Luxury Traveler",
-      text: "The 'Luxury' package truly lives up to its name. The view from our suite was breathtaking and the transport was top-tier.",
+      name: "Sheikh Jamal",
+      role: "Pilgrim",
+      text: "The EastWays team is honest, were incredibly helpful and always available. Whether you're on a budget or looking for premium hotels, they will take care of everything. May Allah bless their business with Barakah and success.",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80"
+    },
+    {
+      id: 7,
+      name: "Anonymous",
+      role: "Pilgrim",
+      text: "The EastWays team is honest, were incredibly helpful and always available. Whether you're on a budget or looking for premium hotels, they will take care of everything. May Allah bless their business with Barakah and success.",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80"
+    },
+    {
+      id: 8,
+      name: "Neda Hamida",
+      role: "Pilgrim",
+      text: "Salaam by the way... Thank you so much for all your assistance in travel accomodation on my trip for Umrah. Everything went smoothly. I found the driver waiting for me at the airport and also to and from the hotel and back to the airport. The hotel bookings were exactly what I wanted and the stays were very pleasant.",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80"
+    },
+    {
+      id: 9,
+      name: "Neda Hamida",
+      role: "Pilgrim",
+      text: "I really appreciated how easy it was to geta hold of you and for Amy questions or changes and your prompt replies. JazakAllahukhair for helping make my trip a successful one!",
       rating: 5,
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80"
     }
@@ -2252,7 +2278,7 @@ const SupportVisual = () => {
       <Reveal animation="animate-drop-in">
         <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white aspect-[3/4]">
           <img
-            src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80"
+            src={supportAgent}
             alt="Customer Support Agent"
             className="w-full h-full object-cover"
           />
@@ -2391,8 +2417,8 @@ const ServicesPage = () => {
           </div>
           <div className="w-full md:w-1/2">
             <ImageStack
-              backImage="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80"
-              frontImage="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&q=80"
+              backImage={hotel17}
+              frontImage={hotel7}
               alt="Luxury Hotel"
             />
           </div>
