@@ -50,8 +50,8 @@ import hotel18 from './assets/images/emaar royal2.jpg';
 import hotel19 from './assets/images/emaar taiba.jpeg';
 import hotel20 from './assets/images/hilton2.avif';
 import hotel21 from './assets/images/hilton3.avif';
-import hotel22 from './assets/images/hyatt1.webp';
-import hotel23 from './assets/images/hyatt2.webp';
+import hotel22 from './assets/images/hyatt3.jpeg';
+import hotel23 from './assets/images/hyatt4.jpeg';
 import hotel24 from './assets/images/maden.jpg';
 import hotel25 from './assets/images/makarem.webp';
 import hotel26 from './assets/images/makkaht1.png';
@@ -190,39 +190,76 @@ const Navbar = () => {
 const Footer = () => (
   <footer className="bg-[#0a192f] text-white py-20 px-6 md:px-20 mt-auto">
     <div className="max-w-7xl mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-gray-800 pb-16">
-        <div className="md:col-span-1">
-          <h3 className="text-2xl font-bold mb-6">Go Eastways</h3>
-          <p className="text-gray-400 text-sm leading-relaxed mb-6">Your trusted partner for spiritual journeys.</p>
+      {/* Grid Layout: 3 Columns (Brand, Links, Contact) */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20 border-b border-gray-800 pb-16">
+        
+        {/* 1. Brand Section */}
+        <div className="space-y-6">
+          <h3 className="text-3xl font-serif font-bold tracking-tight text-white">GoEastWays</h3>
+          <p className="text-gray-400 text-sm leading-7">
+            Providing trusted, comfortable, and spiritually uplifting travel experiences. Specializing in Umrah packages and luxury hotel bookings.
+          </p>
           <div className="flex space-x-4">
-            <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition cursor-pointer"><Instagram size={18} /></div>
-            <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition cursor-pointer"><Facebook size={18} /></div>
-            <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition cursor-pointer"><Youtube size={18} /></div>
+            
+            {/* INSTAGRAM LINKED HERE */}
+            <a 
+              href="https://www.instagram.com/goeastways?igsh=MW8wYTFjNzBwcjJyYw==" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer group"
+            >
+              <Instagram size={18} className="text-gray-300 group-hover:text-white" />
+            </a>
+
+            {/* Facebook (Placeholder - change div to 'a' to link) */}
+            <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer group">
+              <Facebook size={18} className="text-gray-300 group-hover:text-white" />
+            </div>
+
+            {/* Youtube (Placeholder - change div to 'a' to link) */}
+            <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer group">
+              <Youtube size={18} className="text-gray-300 group-hover:text-white" />
+            </div>
           </div>
         </div>
+
+        {/* 2. Quick Links Section */}
         <div>
-          <h4 className="font-bold text-lg mb-6">Quick Links</h4>
-          <ul className="space-y-4 text-gray-400 text-sm">
-            <li><Link to="/about" className="hover:text-blue-400">About</Link></li>
-            <li><Link to="/destinations" className="hover:text-blue-400">Destinations</Link></li>
-            <li><Link to="/hotels" className="hover:text-blue-400">Partner Hotels</Link></li>
-            <li><Link to="/visa" className="hover:text-blue-400">Visa Support</Link></li>
+          <h4 className="font-serif text-xl font-bold mb-8 text-blue-50">Quick Links</h4>
+          <ul className="space-y-4 text-gray-400 text-sm font-medium">
+            <li><Link to="/" className="hover:text-blue-400 transition-colors">Home</Link></li>
+            <li><Link to="/services" className="hover:text-blue-400 transition-colors">Umrah Packages</Link></li>
+            <li><Link to="/hotels" className="hover:text-blue-400 transition-colors">Partner Hotels</Link></li>
+            <li><Link to="/contact" className="hover:text-blue-400 transition-colors">Contact Support</Link></li>
           </ul>
         </div>
-        <div className="md:col-span-2">
-          <h4 className="font-bold text-lg mb-6">Contact us</h4>
-          <ul className="space-y-4 text-gray-400 text-sm">
-            <li className="flex items-center gap-3"><MapPin size={16} className="text-blue-500" /> 123 Sacred Road, View District</li>
-            <li className="flex items-center gap-3"><Phone size={16} className="text-blue-500" /> +44 20 1234 5678</li>
-            <li className="flex items-center gap-3"><Mail size={16} className="text-blue-500" /> support@goeastways.com</li>
+
+        {/* 3. Contact Section */}
+        <div>
+          <h4 className="font-serif text-xl font-bold mb-8 text-blue-50">Contact</h4>
+          <ul className="space-y-6 text-gray-400 text-sm">
+            <li className="flex items-start gap-4">
+              <MapPin size={20} className="text-blue-500 shrink-0 mt-0.5" />
+              <span className="leading-relaxed">123 Sacred Road, View District<br />London, UK</span>
+            </li>
+            <li className="flex items-center gap-4">
+              <Phone size={20} className="text-blue-500 shrink-0" />
+              <span>+44 74 9377 1659</span>
+            </li>
+            <li className="flex items-center gap-4">
+              <Mail size={20} className="text-blue-500 shrink-0" />
+              <span>bookings@goeastways.com</span>
+            </li>
           </ul>
         </div>
       </div>
+
+      {/* Bottom Footer */}
       <div className="pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-        <p>© 2024 Go Eastways. All rights reserved.</p>
+        <p>© 2024 GoEastWays. All rights reserved.</p>
         <div className="flex space-x-6 mt-4 md:mt-0">
-          <a href="#" className="hover:text-white">Privacy Policy</a>
-          <a href="#" className="hover:text-white">Terms of Service</a>
+          <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
         </div>
       </div>
     </div>
@@ -1077,10 +1114,7 @@ const ContactPage = () => {
         {/* Removed fixed min-height, added max-w-5xl for a slightly narrower look */}
         <div className="w-full max-w-5xl bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
 
-          {/* Left Side - Info Panel 
-              - Reduced padding to p-8 
-              - Tighter spacing on the text
-          */}
+          {/* Left Side - Info Panel */}
           <div className="w-full md:w-5/12 bg-[#0a192f] p-8 text-white flex flex-col justify-between relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/20 rounded-full blur-3xl -mr-16 -mt-16"></div>
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-600/10 rounded-full blur-3xl -ml-16 -mb-16"></div>
@@ -1091,11 +1125,11 @@ const ContactPage = () => {
                 Fill up the form and our Team will get back to you within 24 hours.
               </p>
 
-              {/* Contact Details - Reduced vertical space (space-y-6) */}
+              {/* Contact Details */}
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 text-blue-400"><Phone size={16} /></div>
-                  <div><h3 className="font-semibold text-sm mb-0.5">Phone</h3><p className="text-gray-300 text-xs">+44 20 1234 5678</p></div>
+                  <div><h3 className="font-semibold text-sm mb-0.5">Phone</h3><p className="text-gray-300 text-xs">+44 74 9377 1659</p></div>
                 </div>
 
                 <div className="flex items-start gap-4">
@@ -1110,19 +1144,31 @@ const ContactPage = () => {
               </div>
             </div>
 
-            {/* Social Icons - Compact */}
+            {/* Social Icons - UPDATED */}
             <div className="flex gap-3 mt-8 relative z-10">
-              <div className="w-8 h-8 rounded-full bg-black/30 hover:bg-blue-600 transition cursor-pointer flex items-center justify-center text-white"><Instagram size={14} /></div>
-              <div className="w-8 h-8 rounded-full bg-black/30 hover:bg-blue-600 transition cursor-pointer flex items-center justify-center text-white"><Facebook size={14} /></div>
-              <div className="w-8 h-8 rounded-full bg-black/30 hover:bg-blue-600 transition cursor-pointer flex items-center justify-center text-white"><Youtube size={14} /></div>
+              {/* Instagram - Linked */}
+              <a 
+                href="https://www.instagram.com/goeastways?igsh=MW8wYTFjNzBwcjJyYw==" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full bg-black/30 hover:bg-blue-600 transition cursor-pointer flex items-center justify-center text-white"
+              >
+                <Instagram size={14} />
+              </a>
+
+              {/* Facebook - Placeholder (Change div to 'a' if needed) */}
+              <div className="w-8 h-8 rounded-full bg-black/30 hover:bg-blue-600 transition cursor-pointer flex items-center justify-center text-white">
+                <Facebook size={14} />
+              </div>
+
+              {/* Youtube - Placeholder */}
+              <div className="w-8 h-8 rounded-full bg-black/30 hover:bg-blue-600 transition cursor-pointer flex items-center justify-center text-white">
+                <Youtube size={14} />
+              </div>
             </div>
           </div>
 
-          {/* Right Side - Form 
-              - Reduced padding to p-8
-              - Reduced space-y to 4
-              - Reduced input padding to p-3
-          */}
+          {/* Right Side - Form */}
           <div className="w-full md:w-7/12 p-8 bg-white">
             <form className="space-y-4">
 
@@ -1157,13 +1203,13 @@ const ContactPage = () => {
                 </div>
               </div>
 
-              {/* Row 4 - Reduced Textarea Rows to 3 */}
+              {/* Row 4 */}
               <div className="space-y-1">
                 <label className="text-xs font-semibold text-gray-700">Message</label>
                 <textarea rows="3" placeholder="Tell us how we can help..." className="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent block p-3 outline-none transition resize-none"></textarea>
               </div>
 
-              {/* Submit Button - Compact */}
+              {/* Submit Button */}
               <button
                 type="button"
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg shadow-lg hover:shadow-xl transition duration-300 flex items-center justify-center gap-2 text-sm mt-2"
@@ -1187,12 +1233,30 @@ const ContactPage = () => {
 
 
 
-const HotelCard = ({ hotel }) => {
-  const navigate = useNavigate(); // 2. Initialize the hook
+const HotelCard = ({ hotel, index }) => {
+  const navigate = useNavigate();
+  
+  // --- 1. SCROLL ANIMATION LOGIC ---
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = useRef(null);
 
-  // --- SAFETY CHECK ---
-  const images = (hotel.images && hotel.images.length > 0)
-    ? hotel.images
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    if (cardRef.current) observer.observe(cardRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // --- 2. CAROUSEL LOGIC ---
+  const images = (hotel.images && hotel.images.length > 0) 
+    ? hotel.images 
     : ["https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80"];
 
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
@@ -1209,15 +1273,20 @@ const HotelCard = ({ hotel }) => {
 
   const hasMultipleImages = images.length > 1;
 
-  // 3. Define navigation handler
   const handleCheckAvailability = () => {
     navigate('/contact');
   };
 
   return (
-    <div className="bg-white rounded-xl md:rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition duration-300 flex flex-col group relative">
-
-      {/* ... (Image Carousel Section remains unchanged) ... */}
+    <div 
+      ref={cardRef}
+      className={`bg-white rounded-xl md:rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-700 ease-out flex flex-col group relative transform
+        ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}
+      `}
+      style={{ transitionDelay: `${index * 50}ms` }}
+    >
+      
+      {/* --- IMAGE CAROUSEL --- */}
       <div className="relative h-36 md:h-64 overflow-hidden bg-gray-200">
         <img
           src={images[currentImgIndex]}
@@ -1246,8 +1315,7 @@ const HotelCard = ({ hotel }) => {
 
       {/* --- CARD BODY --- */}
       <div className="p-3 md:p-6 flex flex-col flex-grow">
-
-        {/* Heading & Rating */}
+        
         <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-1 md:mb-2 gap-1">
           <h3 className="text-sm md:text-xl font-bold text-gray-900 leading-tight line-clamp-1">{hotel.name}</h3>
           <div className="flex items-center bg-yellow-50 px-1.5 py-0.5 rounded-md self-start md:self-auto">
@@ -1256,12 +1324,10 @@ const HotelCard = ({ hotel }) => {
           </div>
         </div>
 
-        {/* Location */}
         <p className="text-gray-500 text-[10px] md:text-sm mb-3 md:mb-6 flex items-center line-clamp-1">
           <MapPin size={10} className="mr-1 md:w-3.5 md:h-3.5" /> {hotel.location}
         </p>
 
-        {/* Amenities */}
         <div className="flex flex-wrap gap-1 md:gap-2 mb-3 md:mb-8">
           {hotel.amenities && hotel.amenities.slice(0, 2).map((amenity, idx) => (
             <span key={idx} className="bg-gray-100 text-gray-600 text-[9px] md:text-xs px-2 py-1 rounded-md font-medium whitespace-nowrap">
@@ -1269,9 +1335,9 @@ const HotelCard = ({ hotel }) => {
             </span>
           ))}
           {hotel.amenities && hotel.amenities.length > 2 && (
-            <span className="bg-gray-100 text-gray-600 text-[9px] md:text-xs px-2 py-1 rounded-md font-medium md:hidden">
-              +1
-            </span>
+             <span className="bg-gray-100 text-gray-600 text-[9px] md:text-xs px-2 py-1 rounded-md font-medium md:hidden">
+               +1
+             </span>
           )}
           {hotel.amenities && hotel.amenities.length > 2 && (
             <span className="hidden md:inline-flex bg-gray-100 text-gray-600 text-xs px-3 py-1.5 rounded-md font-medium">
@@ -1280,20 +1346,19 @@ const HotelCard = ({ hotel }) => {
           )}
         </div>
 
-        {/* Footer */}
-        <div className="mt-auto flex flex-col md:flex-row md:items-center justify-between pt-3 md:pt-6 border-t border-gray-100 gap-3 md:gap-0">
+        {/* --- FOOTER (Updated Line Height) --- */}
+        <div className="mt-auto flex flex-row items-center justify-between pt-3 md:pt-6 border-t border-gray-100 gap-3">
           <div>
-            <span className="text-[10px] md:text-xs text-gray-400 block">From</span>
-            <div className="flex items-baseline">
-              <span className="text-base md:text-2xl font-bold text-blue-600">{hotel.price}</span>
-              <span className="text-gray-400 text-[10px] md:text-sm ml-1">/night</span>
-            </div>
+            <span className="text-[10px] md:text-xs text-gray-400 block mb-0.5">Rate</span>
+            {/* CHANGED: leading-none reduces the space between lines */}
+            <span className="text-xs md:text-sm font-medium text-blue-600 leading-none block">
+              Inquire<br />for price
+            </span>
           </div>
-
-          {/* 4. Updated Button with onClick Handler */}
-          <button
+          
+          <button 
             onClick={handleCheckAvailability}
-            className="bg-blue-600 text-white w-full md:w-auto px-4 py-2 md:px-6 md:py-2.5 rounded-lg md:rounded-xl text-xs md:text-sm font-semibold hover:bg-gray-900 transition shadow-md"
+            className="bg-blue-600 text-white px-4 py-2 md:px-6 md:py-2.5 rounded-lg md:rounded-xl text-xs md:text-sm font-semibold hover:bg-gray-900 transition shadow-md whitespace-nowrap"
           >
             Check Availability
           </button>
@@ -1303,11 +1368,23 @@ const HotelCard = ({ hotel }) => {
   );
 };
 
-// --- MAIN PAGE COMPONENT ---
+// --- UPDATED HOTELS PAGE (With Animations) ---
 const HotelsPage = () => {
   const [activeFilter, setActiveFilter] = useState('All');
 
-  // Full Hotel Data List (With 'images' array for Carousel support)
+  // --- ANIMATION FOR HEADER ---
+  const [headerVisible, setHeaderVisible] = useState(false);
+  const headerRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if(entry.isIntersecting) { setHeaderVisible(true); observer.disconnect(); }
+    }, { threshold: 0.1 });
+    if(headerRef.current) observer.observe(headerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // Full Hotel Data List
   const hotels = [
     // --- MAKKAH HOTELS ---
     {
@@ -1316,12 +1393,8 @@ const HotelsPage = () => {
       city: "Makkah",
       location: "Abraj Al Bait",
       rating: 4.8,
-      price: "$210",
-      // DEMO: This hotel has multiple images to test the carousel
-      images: [
-        hotel35,
-        hotel36
-      ],
+      price: "$210", // Kept in data, but hidden in UI
+      images: [hotel35, hotel36],
       amenities: ["Haram View", "Direct Access", "5 Star"]
     },
     {
@@ -1454,7 +1527,6 @@ const HotelsPage = () => {
       images: [hotel38],
       amenities: ["Premium", "Shuttle", "Design"]
     },
-
     // --- MADINA HOTELS ---
     {
       id: 15,
@@ -1608,8 +1680,11 @@ const HotelsPage = () => {
     <div className="min-h-screen bg-gray-50 flex flex-col pt-32 pb-20">
       <div className="max-w-7xl mx-auto w-full px-4 md:px-6">
 
-        {/* Header */}
-        <div className="text-center mb-8 md:mb-12">
+        {/* Header with Animation */}
+        <div 
+          ref={headerRef}
+          className={`text-center mb-8 md:mb-12 transition-all duration-1000 ease-out transform ${headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+        >
           <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
             Find Your Perfect Stay
           </h1>
@@ -1618,8 +1693,10 @@ const HotelsPage = () => {
           </p>
         </div>
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-10 md:mb-16">
+        {/* Filter Buttons with Animation */}
+        <div 
+          className={`flex flex-wrap justify-center gap-2 md:gap-4 mb-10 md:mb-16 transition-all duration-1000 ease-out delay-200 transform ${headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+        >
           {filters.map((filter) => (
             <button
               key={filter}
@@ -1636,8 +1713,9 @@ const HotelsPage = () => {
 
         {/* Hotel Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
-          {filteredHotels.map((hotel) => (
-            <HotelCard key={hotel.id} hotel={hotel} />
+          {filteredHotels.map((hotel, index) => (
+            // Pass index for staggered animation delay
+            <HotelCard key={hotel.id} hotel={hotel} index={index} />
           ))}
         </div>
 
@@ -1652,11 +1730,76 @@ const HotelsPage = () => {
 
 
 
-const FAQPage = () => {
-  // State to track which accordion is open
-  const [openIndex, setOpenIndex] = useState(null);
+const FAQItem = ({ faq, index, isOpen, toggle }) => {
+  const itemRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
 
-  // Mock Data for the Accordion
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect(); // Trigger only once
+        }
+      },
+      { threshold: 0.2 } // Trigger when 20% visible
+    );
+    if (itemRef.current) observer.observe(itemRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // Alternating Animation Direction
+  // Even index = Slide from Left | Odd index = Slide from Right
+  const animationClass = index % 2 === 0 ? 'animate-slide-left' : 'animate-slide-right';
+
+  return (
+    <div
+      ref={itemRef}
+      className={`bg-white rounded-2xl transition-all duration-500 ease-out transform
+        ${isVisible ? `${animationClass} opacity-100 translate-x-0` : 'opacity-0'} 
+        ${isOpen ? 'shadow-lg ring-1 ring-blue-100' : 'shadow-sm hover:shadow-md'}
+      `}
+    >
+      {/* Accordion Header */}
+      <button
+        onClick={() => toggle(index)}
+        className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
+      >
+        <span className={`text-lg font-bold transition-colors ${isOpen ? 'text-blue-600' : 'text-gray-800'}`}>
+          {faq.question}
+        </span>
+        <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-300 ${isOpen ? 'bg-blue-100 text-blue-600' : 'bg-gray-100 text-gray-500'}`}>
+          {isOpen ? <Minus size={18} /> : <Plus size={18} />}
+        </div>
+      </button>
+
+      {/* Accordion Body */}
+      <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'}`}>
+        <div className="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-50 mx-6 mt-2">
+          {faq.answer}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// --- MAIN PAGE COMPONENT ---
+const FAQPage = () => {
+  const navigate = useNavigate();
+  const [openIndex, setOpenIndex] = useState(null);
+  
+  // Header Animation State
+  const [headerVisible, setHeaderVisible] = useState(false);
+  const headerRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if(entry.isIntersecting) { setHeaderVisible(true); observer.disconnect(); }
+    }, { threshold: 0.1 });
+    if(headerRef.current) observer.observe(headerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   const faqs = [
     {
       question: "What documents do I need for the trip?",
@@ -1685,11 +1828,34 @@ const FAQPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col pt-32 pb-20">
+    <div className="min-h-screen bg-gray-50 flex flex-col pt-32 pb-20 overflow-x-hidden">
+      
+      {/* --- CSS ANIMATIONS --- */}
+      <style>{`
+        @keyframes slideInLeft {
+          from { opacity: 0; transform: translateX(-50px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+          from { opacity: 0; transform: translateX(50px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-slide-left { animation: slideInLeft 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+        .animate-slide-right { animation: slideInRight 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+        .animate-fade-up { animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+      `}</style>
+
       <div className="max-w-4xl mx-auto w-full px-6">
 
-        {/* Heading Section */}
-        <div className="text-center mb-16">
+        {/* Heading Section (Fade Up) */}
+        <div 
+          ref={headerRef}
+          className={`text-center mb-16 transition-all duration-1000 ease-out ${headerVisible ? 'animate-fade-up opacity-100' : 'opacity-0'}`}
+        >
           <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
             Frequently Asked Questions
           </h1>
@@ -1698,48 +1864,26 @@ const FAQPage = () => {
           </p>
         </div>
 
-        {/* Accordion List */}
+        {/* Accordion List (Items slide in individually) */}
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className={`bg-white rounded-2xl transition-all duration-300 ${openIndex === index ? 'shadow-lg ring-1 ring-blue-100' : 'shadow-sm hover:shadow-md'
-                }`}
-            >
-              {/* Accordion Header (Clickable) */}
-              <button
-                onClick={() => toggleFAQ(index)}
-                className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
-              >
-                <span className={`text-lg font-bold transition-colors ${openIndex === index ? 'text-blue-600' : 'text-gray-800'
-                  }`}>
-                  {faq.question}
-                </span>
-
-                {/* Icon Wrapper */}
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-300 ${openIndex === index ? 'bg-blue-100 text-blue-600' : 'bg-gray-100 text-gray-500'
-                  }`}>
-                  {openIndex === index ? <Minus size={18} /> : <Plus size={18} />}
-                </div>
-              </button>
-
-              {/* Accordion Body (Answer) */}
-              <div
-                className={`overflow-hidden transition-all duration-300 ease-in-out ${openIndex === index ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'
-                  }`}
-              >
-                <div className="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-50 mx-6 mt-2">
-                  {faq.answer}
-                </div>
-              </div>
-            </div>
+            <FAQItem 
+              key={index} 
+              index={index} 
+              faq={faq} 
+              isOpen={openIndex === index} 
+              toggle={toggleFAQ} 
+            />
           ))}
         </div>
 
-        {/* Bottom CTA similar to wireframe spacing */}
-        <div className="mt-16 text-center">
+        {/* Bottom CTA (Fade Up) */}
+        <div className={`mt-16 text-center transition-all duration-1000 delay-500 ease-out ${headerVisible ? 'animate-fade-up opacity-100' : 'opacity-0'}`}>
           <p className="text-gray-500 mb-4">Still have questions?</p>
-          <button className="bg-gray-900 text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-600 transition shadow-lg">
+          <button 
+            onClick={() => navigate('/contact')}
+            className="bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-gray-900 transition shadow-lg"
+          >
             Contact Support
           </button>
         </div>

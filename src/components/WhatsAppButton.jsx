@@ -17,7 +17,7 @@ const WhatsAppButton = () => {
       aria-label="Chat on WhatsApp"
     >
       {/* Tooltip text (Optional - appears on hover) */}
-      <span className="absolute right-16 bg-gray-900 text-white text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap shadow-sm pointer-events-none">
+      <span className="absolute right-16 bg-blue-900 text-white text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap shadow-sm pointer-events-none">
         Chat with us
       </span>
 
