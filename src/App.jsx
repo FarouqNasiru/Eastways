@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // IMPORT ROUTER
-import { Play, Facebook, Instagram, Youtube, Phone, Send, ChevronDown, ChevronLeft, ChevronRight, MapPin, Mail, Plus, Minus, Star, Wifi, Coffee, Car, Quote, ArrowRight, MessageSquare, CheckCircle, Map, CreditCard, Shield, ShieldCheck, Headset, Menu, X } from 'lucide-react';
+import { Play, Facebook, Instagram, Youtube, Phone, Send, ChevronDown, ChevronLeft, ChevronRight, MapPin, Mail, Plus, Minus, Star, Wifi, Coffee, Car, Quote, ArrowRight, MessageSquare, CheckCircle, Map, CreditCard, Shield, ShieldCheck, Headset, Menu, X, User } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import WhatsAppButton from './components/WhatsAppButton';
@@ -2000,7 +2000,7 @@ const MobileAnimatedCard = ({ children, index }) => {
 };
 
 const TestimonialsPage = () => {
-  // Mock Reviews Data
+  // 2. Mock Reviews Data - REMOVED SPECIFIC IMAGE URLs
   const reviews = [
     {
       id: 1,
@@ -2008,7 +2008,7 @@ const TestimonialsPage = () => {
       role: "Pilgrim",
       text: "The stay was amazing Alhamdulillah. The moment I entered the hotel, the receptionist only took my name, and within three minutes, I was guided to my room. Everything went smoothly and quick.",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80"
+      // image property removed
     },
     {
       id: 2,
@@ -2016,7 +2016,6 @@ const TestimonialsPage = () => {
       role: "Pilgrim",
       text: "I will definitely be booking this hotel again for my next trip in sha Allah, and will do that through EastWays again. The combination of low budget and the great service makes it worth it.",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80"
     },
     {
       id: 3,
@@ -2024,7 +2023,6 @@ const TestimonialsPage = () => {
       role: "Pilgrim",
       text: "I recently booked a hotel through EastWays, and I must say, the experience was outstanding. It offered the best rates compared to other booking platforms. No hidden fees, no last-minute surprises.",
       rating: 4,
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80"
     },
     {
       id: 4,
@@ -2032,7 +2030,6 @@ const TestimonialsPage = () => {
       role: "Pilgrim",
       text: "I saved a significant amount, making it the most cost-effective option without compromising on quality or convenience. Highly recommend for budget-conscious travelers seeking the best deals!",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80"
     },
     {
       id: 5,
@@ -2040,7 +2037,6 @@ const TestimonialsPage = () => {
       role: "Pilgrim",
       text: "If you're seeking the best hotel prices in Makkah and Marina, I highly recommend Eastways. The spiritual guidance provided by the team added so much depth to our Umrah.",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80"
     },
     {
       id: 6,
@@ -2048,7 +2044,6 @@ const TestimonialsPage = () => {
       role: "Pilgrim",
       text: "The EastWays team is honest, incredibly helpful and always available. Whether you're on a budget or looking for premium hotels, they will take care of everything.",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80"
     },
     {
       id: 7,
@@ -2056,7 +2051,6 @@ const TestimonialsPage = () => {
       role: "Pilgrim",
       text: "Thank you so much for all your assistance. Everything went smoothly. I found the driver waiting for me at the airport. The hotel bookings were exactly what I wanted.",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80"
     },
     {
       id: 8,
@@ -2064,7 +2058,6 @@ const TestimonialsPage = () => {
       role: "Pilgrim",
       text: "I really appreciated how easy it was to get a hold of you for any questions or changes and your prompt replies. JazakAllahukhair for helping make my trip a successful one!",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&q=80"
     }
   ];
 
@@ -2075,14 +2068,13 @@ const TestimonialsPage = () => {
         <Star
           key={i}
           size={12}
-          // Changed to a golden yellow that pops against blue
-          className={i < count ? "text-blue-600 fill-current" : "text-gray-200"}
+          className={i < count ? "text-yellow-500 fill-current" : "text-gray-200"}
         />
       ))}
     </div>
   );
 
-  // --- UPDATED CARD COMPONENT (Blue Accents) ---
+  // --- UPDATED CARD COMPONENT (Generic Placeholder) ---
   const TestimonialCard = ({ review }) => (
     <div className="bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-sm border border-blue-100 hover:border-blue-300 hover:shadow-blue-100/50 transition duration-300 w-full mx-auto flex flex-col h-full relative overflow-hidden group">
       
@@ -2091,12 +2083,11 @@ const TestimonialsPage = () => {
 
       <div className="flex justify-between items-start mb-3 relative z-10">
         <div className="flex items-center gap-3">
+          {/* 3. REPLACED IMG WITH GENERIC SVG PLACEHOLDER */}
           <div className="p-0.5 bg-gradient-to-tr from-blue-500 to-blue-300 rounded-full">
-            <img 
-              src={review.image} 
-              alt={review.name} 
-              className="w-10 h-10 rounded-full object-cover border-2 border-white" 
-            />
+            <div className="w-10 h-10 rounded-full border-2 border-white bg-blue-50 flex items-center justify-center">
+              <User size={20} className="text-blue-300 fill-current" />
+            </div>
           </div>
           <div>
             <h4 className="font-bold text-sm text-gray-900 leading-tight">{review.name}</h4>
@@ -2110,7 +2101,6 @@ const TestimonialsPage = () => {
       </div>
 
       <p className="text-gray-600 text-xs md:text-sm leading-relaxed relative z-10">
-        {/* Blue Quote Icon */}
         <span className="inline-block mr-1">
            <Quote size={12} className="text-blue-400 fill-current transform rotate-180" />
         </span>
@@ -2136,14 +2126,11 @@ const TestimonialsPage = () => {
   const navigate = useNavigate();
   
   return (
-    // Changed BG to slate-50 for a cooler tone
     <div className="min-h-screen bg-slate-50 flex flex-col pt-32 pb-20 relative overflow-hidden">
       
       {/* --- CREATIVE BACKGROUND ELEMENTS --- */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        {/* Top Right Blue Glow */}
         <div className="absolute top-0 right-[-10%] w-[600px] h-[600px] bg-blue-400/10 rounded-full blur-[100px]"></div>
-        {/* Bottom Left Indigo Glow */}
         <div className="absolute bottom-0 left-[-10%] w-[500px] h-[500px] bg-indigo-400/10 rounded-full blur-[100px]"></div>
       </div>
 
@@ -2157,7 +2144,7 @@ const TestimonialsPage = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">
-            Loved by Travelers
+            Loved by <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">Travelers</span>
           </h1>
           <p className="text-slate-600 text-lg max-w-2xl mx-auto">
             Don't just take our word for it. Read what our pilgrims have to say about their spiritual journey with Eastways.
@@ -2175,7 +2162,6 @@ const TestimonialsPage = () => {
 
         {/* --- DESKTOP VIEW (3-Column Scrolling Grid) --- */}
         <div className="hidden md:grid grid-cols-3 gap-4 relative h-[600px] overflow-hidden">
-          {/* Updated gradients to match the slate-50 background */}
           <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-slate-50 to-transparent z-20 pointer-events-none"></div>
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-50 to-transparent z-20 pointer-events-none"></div>
 
