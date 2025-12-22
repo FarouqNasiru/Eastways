@@ -22,6 +22,10 @@ import g10 from './assets/images/g10.jpg';
 import g11 from './assets/images/g11.jpg';
 import g12 from './assets/images/g12.jpg';
 import g13 from './assets/images/g13.jpg';
+import g14 from './assets/images/g14.jpg';
+import g16 from './assets/images/g16.jpg';
+import g17 from './assets/images/g17.jpg';
+import g18 from './assets/images/g18.jpg';
 import LogoIcon from './assets/images/Bigger blue.png';
 import LogoText from './assets/images/EastWays Logo no bg name.png';
 import videoFile from './assets/videos/east-vid.mp4';
@@ -229,9 +233,11 @@ const Footer = () => (
           <h4 className="font-serif text-xl font-bold mb-8 text-blue-50">Quick Links</h4>
           <ul className="space-y-4 text-gray-400 text-sm font-medium">
             <li><Link to="/" className="hover:text-blue-400 transition-colors">Home</Link></li>
-            <li><Link to="/services" className="hover:text-blue-400 transition-colors">Umrah Packages</Link></li>
-            <li><Link to="/hotels" className="hover:text-blue-400 transition-colors">Partner Hotels</Link></li>
-            <li><Link to="/contact" className="hover:text-blue-400 transition-colors">Contact Support</Link></li>
+            <li><Link to="/services" className="hover:text-blue-400 transition-colors">Services</Link></li>
+            <li><Link to="/hotels" className="hover:text-blue-400 transition-colors">Hotels</Link></li>
+            <li><Link to="/testimonials" className="hover:text-blue-400 transition-colors">Testimonials</Link></li>
+            <li><Link to="/faqs" className="hover:text-blue-400 transition-colors">FAQs</Link></li>
+            <li><Link to="/contact" className="hover:text-blue-400 transition-colors">Contact</Link></li>
           </ul>
         </div>
 
@@ -547,7 +553,7 @@ const TravelCollage = () => (
     {/* 1. Back Layer: The Holy Kaaba (Large, tilted left) */}
     <div className="absolute top-0 left-4 w-64 h-64 rounded-3xl overflow-hidden shadow-2xl transform -rotate-6 z-10 border-4 border-white">
       <img
-        src="https://images.unsplash.com/photo-1565552645632-d725f8bfc19a?auto=format&fit=crop&q=80"
+        src={g14}
         alt="Holy Kaaba"
         className="w-full h-full object-cover"
       />
@@ -556,7 +562,7 @@ const TravelCollage = () => (
     {/* 2. Middle Layer: The Mobile App (Centered, upright) */}
     <div className="absolute top-12 right-8 w-48 h-80 rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] z-20 border-[6px] border-white bg-gray-100">
       <img
-        src={card1}
+        src={g18}
         alt="Mobile App Interface"
         className="w-full h-full object-cover"
       />
@@ -568,7 +574,7 @@ const TravelCollage = () => (
     <div className="absolute bottom-10 left-0 w-48 h-auto z-30 transform rotate-3 hover:scale-105 transition duration-300">
       <div className="bg-white p-2 rounded-xl shadow-2xl">
         <img
-          src={card2}
+          src={g16}
           alt="Travel Documents"
           className="w-full h-32 object-cover rounded-lg"
         />
@@ -596,7 +602,7 @@ const MissionCollage = () => (
     <div className="absolute top-0 left-4 w-64 h-64 rounded-3xl overflow-hidden shadow-2xl transform rotate-6 z-10 border-4 border-white bg-gray-200">
       <img
         // Image of Prophet's Mosque green dome
-        src="https://images.unsplash.com/photo-1564769662533-4f00a87b4056?auto=format&fit=crop&q=80"
+        src={hotel11}
         alt="Masjid an-Nabawi"
         className="w-full h-full object-cover"
       />
@@ -606,7 +612,7 @@ const MissionCollage = () => (
     <div className="absolute top-12 right-8 w-56 h-72 rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] z-20 border-[6px] border-white bg-gray-100">
       <img
         // Image of luxury hotel interior
-        src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&q=80"
+        src={hotel36}
         alt="Luxury Accommodation"
         className="w-full h-full object-cover"
       />
@@ -619,13 +625,13 @@ const MissionCollage = () => (
       <div className="bg-white p-2 rounded-xl shadow-2xl">
         <img
           // Image of pilgrims together/guided tour vibe
-          src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&q=80"
+          src={g17}
           alt="Guided Pilgrims"
           className="w-full h-36 object-cover rounded-lg brightness-110"
         />
 
         {/* Decorative Badge - UPDATED TEXT & COLOR */}
-        <div className="absolute -top-3 -right-3 bg-green-600 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-md border border-white flex items-center gap-1">
+        <div className="absolute -top-3 -right-3 bg-blue-600 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-md border border-white flex items-center gap-1">
           <span>TRUSTED GUIDE</span>
         </div>
       </div>
@@ -911,8 +917,6 @@ const Gallery = () => {
 
 const VideoSection = () => {
   const videoRef = useRef(null);
-
-  // CHANGED: Start false (paused) so audio works on first click
   const [isPlaying, setIsPlaying] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
@@ -938,7 +942,6 @@ const VideoSection = () => {
       if (isPlaying) {
         videoRef.current.pause();
       } else {
-        // This promise handling prevents errors if user clicks too fast
         const playPromise = videoRef.current.play();
         if (playPromise !== undefined) {
           playPromise.catch((error) => {
@@ -953,7 +956,6 @@ const VideoSection = () => {
   return (
     <section ref={sectionRef} className="py-24 px-6 md:px-20 bg-white overflow-hidden">
 
-      {/* 3. ANIMATION STYLES */}
       <style>{`
         @keyframes fadeUp {
           from { opacity: 0; transform: translateY(30px); }
@@ -978,17 +980,16 @@ const VideoSection = () => {
         .animate-card { animation: slideInCard 0.8s ease-out forwards; }
       `}</style>
 
-      {/* Header - Fades Up */}
+      {/* Header */}
       <div
         className={`text-center mb-16 flex flex-col items-center opacity-0 ${isVisible ? 'animate-fade-up' : ''}`}
       >
         <div className="max-w-xl">
           <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900 leading-tight">
             Get In Touch,<br /> Start Your Journey Today
-
           </h2>
           <p className="text-gray-500 text-lg leading-relaxed px-4">
-            Explore our Umrah deals or contact our team for a personalized quote.
+            Explore our Umrah deals or contact our team for a personalized quote.
           </p>
         </div>
       </div>
@@ -996,55 +997,53 @@ const VideoSection = () => {
       {/* Video Container Wrapper */}
       <div className="relative w-full max-w-5xl mx-auto">
 
-        {/* Top-Left Badge - Slides in from Left (Delayed) */}
+        {/* Top-Left Badge */}
         <div
           className={`absolute -top-6 -left-6 z-20 hidden md:flex w-24 h-24 bg-[#0ea5e9] items-center justify-center shadow-lg opacity-0 
             ${isVisible ? 'animate-badge' : ''}`}
           style={{ animationDelay: '0.4s' }}
         >
-          {/* Replaced Text 'E' with Logo Icon if you have it imported, otherwise text */}
           <span className="text-white text-5xl font-serif italic font-bold">E</span>
         </div>
 
-        {/* Main Video Area - Zooms In (Delayed) */}
+        {/* Main Video Area */}
         <div
-          className={`relative rounded-[2.5rem] overflow-hidden shadow-2xl h-[400px] md:h-[500px] z-10 bg-black opacity-0 
+          className={`relative rounded-2xl md:rounded-[2.5rem] overflow-hidden shadow-2xl w-full h-auto aspect-video md:h-[500px] md:aspect-auto z-10 bg-black opacity-0 
             ${isVisible ? 'animate-zoom-in' : ''}`}
           style={{ animationDelay: '0.2s' }}
         >
-          {/* VIDEO TAG UPDATED: Removed 'muted' and 'autoPlay' */}
+          {/* UPDATED VIDEO TAG:
+              1. Added onClick={togglePlay} so users can tap anywhere to play/pause.
+              2. Added 'cursor-pointer' to indicate interactivity.
+          */}
           <video
             ref={videoRef}
-            className="w-full h-full object-cover brightness-[0.7]"
+            onClick={togglePlay} 
+            className="w-full h-full object-cover brightness-[0.7] cursor-pointer"
             loop
             playsInline
-          // src={videoFile} <--- Ensure videoFile is imported at top of App.js
           >
             <source src={videoFile} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
 
-          {/* Play/Pause Button */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <button
-              onClick={togglePlay}
-              className="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/50 hover:bg-white/20 transition group cursor-pointer"
-            >
-              {isPlaying ? (
-                // Pause Icon
-                <div className="flex gap-1">
-                  <div className="w-2 h-6 bg-white rounded-full"></div>
-                  <div className="w-2 h-6 bg-white rounded-full"></div>
-                </div>
-              ) : (
-                // Play Icon
-                <Play fill="white" className="text-white ml-1 w-8 h-8 group-hover:scale-110 transition" />
-              )}
-            </button>
-          </div>
+          {/* UPDATED BUTTON LOGIC:
+              Only render this div if !isPlaying (i.e., video is paused).
+          */}
+          {!isPlaying && (
+            <div className="absolute inset-0 flex items-center justify-center bg-black/10 pointer-events-none">
+              <button
+                onClick={togglePlay}
+                // Added pointer-events-auto so the button itself is clickable
+                className="pointer-events-auto w-16 h-16 md:w-20 md:h-20 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/50 hover:bg-white/20 transition group"
+              >
+                <Play fill="white" className="text-white ml-1 w-6 h-6 md:w-8 md:h-8 group-hover:scale-110 transition" />
+              </button>
+            </div>
+          )}
         </div>
 
-        {/* Bottom-Right Floating Card - Slides in from Right (Delayed) */}
+        {/* Bottom-Right Floating Card */}
         <div
           className={`absolute -bottom-10 -right-4 z-20 hidden md:block opacity-0 
             ${isVisible ? 'animate-card' : ''}`}
@@ -1065,6 +1064,11 @@ const VideoSection = () => {
     </section>
   );
 };
+
+
+
+
+
 
 // --- 4. PAGE LAYOUTS ---
 
@@ -1960,6 +1964,41 @@ const FAQPage = () => {
 
 
 
+
+
+const MobileAnimatedCard = ({ children, index }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          if (cardRef.current) observer.unobserve(cardRef.current);
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    if (cardRef.current) observer.observe(cardRef.current);
+    return () => { if (cardRef.current) observer.disconnect(); };
+  }, []);
+
+  const isEven = index % 2 === 0;
+  const initialState = isEven ? '-translate-x-16 opacity-0' : 'translate-x-16 opacity-0';
+  const finalState = 'translate-x-0 opacity-100';
+
+  return (
+    <div
+      ref={cardRef}
+      className={`transform transition-all duration-700 ease-out ${isVisible ? finalState : initialState}`}
+    >
+      {children}
+    </div>
+  );
+};
+
 const TestimonialsPage = () => {
   // Mock Reviews Data
   const reviews = [
@@ -1967,7 +2006,7 @@ const TestimonialsPage = () => {
       id: 1,
       name: "Anonymous",
       role: "Pilgrim",
-      text: "The stay was amazing Alhamdulillah. The moment I entered the hotel, the receptionist only took my name, and within three minutes, I was guided to my room. Everything went smoothly and quick. They also gave us an amazing view of the Clocktower in Makkah. It was also just 5 minutes away from Masjid al Haram.",
+      text: "The stay was amazing Alhamdulillah. The moment I entered the hotel, the receptionist only took my name, and within three minutes, I was guided to my room. Everything went smoothly and quick.",
       rating: 5,
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80"
     },
@@ -1975,7 +2014,7 @@ const TestimonialsPage = () => {
       id: 2,
       name: "Yousef Hassan",
       role: "Pilgrim",
-      text: "I will definitely be booking this hotel again for my next trip in sha Allah, and will do that through EastWays again. The combination of low budget and the great service and experience make it definitely worth it to keep booking through you.",
+      text: "I will definitely be booking this hotel again for my next trip in sha Allah, and will do that through EastWays again. The combination of low budget and the great service makes it worth it.",
       rating: 5,
       image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80"
     },
@@ -1983,7 +2022,7 @@ const TestimonialsPage = () => {
       id: 3,
       name: "Anonymous",
       role: "Pilgrim",
-      text: "I recently booked a hotel through EastWays, and I must say, the experience was outstanding. The interface was easy to navigate, allowing me to compare multiple hotel options in minutes. What truly set it apart was the price. It offered the best rates compared to other booking platforms. No hidden fees, no last-minute surprises.",
+      text: "I recently booked a hotel through EastWays, and I must say, the experience was outstanding. It offered the best rates compared to other booking platforms. No hidden fees, no last-minute surprises.",
       rating: 4,
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80"
     },
@@ -1999,7 +2038,7 @@ const TestimonialsPage = () => {
       id: 5,
       name: "Anonymous",
       role: "Pilgrim",
-      text: "If you're seeking the best hotel prices in Makkah and Marina, for Umrah or Hajj, I highly recommend Eastways. I've personally used their services a couple of times, and they've consistently offered me better rates than those found on sites like booking.comThe spiritual guidance provided by the team added so much depth to our Umrah. It wasn't just logistics; it was a true journey.",
+      text: "If you're seeking the best hotel prices in Makkah and Marina, I highly recommend Eastways. The spiritual guidance provided by the team added so much depth to our Umrah.",
       rating: 5,
       image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80"
     },
@@ -2007,46 +2046,76 @@ const TestimonialsPage = () => {
       id: 6,
       name: "Sheikh Jamal",
       role: "Pilgrim",
-      text: "The EastWays team is honest, were incredibly helpful and always available. Whether you're on a budget or looking for premium hotels, they will take care of everything. May Allah bless their business with Barakah and success.",
+      text: "The EastWays team is honest, incredibly helpful and always available. Whether you're on a budget or looking for premium hotels, they will take care of everything.",
       rating: 5,
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80"
     },
     {
       id: 7,
-      name: "Anonymous",
+      name: "Neda Hamida",
       role: "Pilgrim",
-      text: "The EastWays team is honest, were incredibly helpful and always available. Whether you're on a budget or looking for premium hotels, they will take care of everything. May Allah bless their business with Barakah and success.",
+      text: "Thank you so much for all your assistance. Everything went smoothly. I found the driver waiting for me at the airport. The hotel bookings were exactly what I wanted.",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80"
+      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80"
     },
     {
       id: 8,
-      name: "Neda Hamida",
+      name: "Amina Khan",
       role: "Pilgrim",
-      text: "Salaam by the way... Thank you so much for all your assistance in travel accomodation on my trip for Umrah. Everything went smoothly. I found the driver waiting for me at the airport and also to and from the hotel and back to the airport. The hotel bookings were exactly what I wanted and the stays were very pleasant.",
+      text: "I really appreciated how easy it was to get a hold of you for any questions or changes and your prompt replies. JazakAllahukhair for helping make my trip a successful one!",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80"
-    },
-    {
-      id: 9,
-      name: "Neda Hamida",
-      role: "Pilgrim",
-      text: "I really appreciated how easy it was to geta hold of you and for Amy questions or changes and your prompt replies. JazakAllahukhair for helping make my trip a successful one!",
-      rating: 5,
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80"
+      image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&q=80"
     }
   ];
 
   // Helper to render stars
   const renderStars = (count) => (
-    <div className="flex gap-1 mb-3">
+    <div className="flex gap-0.5">
       {[...Array(5)].map((_, i) => (
         <Star
           key={i}
-          size={14}
-          className={i < count ? "text-blue-500 fill-current" : "text-gray-300"}
+          size={12}
+          // Changed to a golden yellow that pops against blue
+          className={i < count ? "text-blue-600 fill-current" : "text-gray-200"}
         />
       ))}
+    </div>
+  );
+
+  // --- UPDATED CARD COMPONENT (Blue Accents) ---
+  const TestimonialCard = ({ review }) => (
+    <div className="bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-sm border border-blue-100 hover:border-blue-300 hover:shadow-blue-100/50 transition duration-300 w-full mx-auto flex flex-col h-full relative overflow-hidden group">
+      
+      {/* Decorative Gradient Blob inside card */}
+      <div className="absolute top-0 right-0 w-16 h-16 bg-blue-50 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-150 duration-500"></div>
+
+      <div className="flex justify-between items-start mb-3 relative z-10">
+        <div className="flex items-center gap-3">
+          <div className="p-0.5 bg-gradient-to-tr from-blue-500 to-blue-300 rounded-full">
+            <img 
+              src={review.image} 
+              alt={review.name} 
+              className="w-10 h-10 rounded-full object-cover border-2 border-white" 
+            />
+          </div>
+          <div>
+            <h4 className="font-bold text-sm text-gray-900 leading-tight">{review.name}</h4>
+            <p className="text-[10px] text-blue-500 font-bold uppercase tracking-wide">{review.role}</p>
+          </div>
+        </div>
+        
+        <div className="mt-1 shrink-0 bg-blue-50 px-2 py-1 rounded-md">
+          {renderStars(review.rating)}
+        </div>
+      </div>
+
+      <p className="text-gray-600 text-xs md:text-sm leading-relaxed relative z-10">
+        {/* Blue Quote Icon */}
+        <span className="inline-block mr-1">
+           <Quote size={12} className="text-blue-400 fill-current transform rotate-180" />
+        </span>
+        {review.text}
+      </p>
     </div>
   );
 
@@ -2054,74 +2123,71 @@ const TestimonialsPage = () => {
   const TestimonialColumn = ({ items, duration = "30s" }) => (
     <div className="relative flex-1 h-[600px] overflow-hidden group">
       <div
-        className="flex flex-col gap-6 animate-infinite-scroll group-hover:[animation-play-state:paused]"
+        className="flex flex-col gap-4 animate-infinite-scroll group-hover:[animation-play-state:paused]"
         style={{ animationDuration: duration }}
       >
         {[...items, ...items].map((review, idx) => (
-          // CHANGED: w-[95%] to fill more space, gap reduced via parent grid
-          <div key={idx} className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition duration-300 w-[95%] mx-auto">
-            {renderStars(review.rating)}
-            <p className="text-gray-600 text-sm leading-relaxed mb-6 italic relative">
-              <Quote size={20} className="absolute -top-2 -left-2 text-blue-100 -z-10 transform -scale-x-100" />
-              "{review.text}"
-            </p>
-            <div className="flex items-center gap-3">
-              <img src={review.image} alt={review.name} className="w-10 h-10 rounded-full object-cover" />
-              <div>
-                <h4 className="font-bold text-sm text-gray-900">{review.name}</h4>
-                <p className="text-xs text-gray-400">{review.role}</p>
-              </div>
-            </div>
-          </div>
+          <TestimonialCard key={idx} review={review} />
         ))}
       </div>
     </div>
   );
 
-
   const navigate = useNavigate();
+  
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col pt-32 pb-20">
+    // Changed BG to slate-50 for a cooler tone
+    <div className="min-h-screen bg-slate-50 flex flex-col pt-32 pb-20 relative overflow-hidden">
+      
+      {/* --- CREATIVE BACKGROUND ELEMENTS --- */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        {/* Top Right Blue Glow */}
+        <div className="absolute top-0 right-[-10%] w-[600px] h-[600px] bg-blue-400/10 rounded-full blur-[100px]"></div>
+        {/* Bottom Left Indigo Glow */}
+        <div className="absolute bottom-0 left-[-10%] w-[500px] h-[500px] bg-indigo-400/10 rounded-full blur-[100px]"></div>
+      </div>
+
       <style>{`
-        @keyframes infinite-scroll {
-          0% { transform: translateY(0); }
-          100% { transform: translateY(-50%); }
-        }
-        .animate-infinite-scroll {
-          animation: infinite-scroll linear infinite;
-        }
+        @keyframes infinite-scroll { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+        .animate-infinite-scroll { animation: infinite-scroll linear infinite; }
       `}</style>
 
-      {/* CHANGED: max-w-6xl (was 7xl) to bring columns closer together */}
-      <div className="max-w-6xl mx-auto w-full px-6">
-        <div className="text-center mb-16">
-          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
-            Loved by travelers
+      <div className="max-w-6xl mx-auto w-full px-6 relative z-10">
+        
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">
+            Loved by Travelers
           </h1>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-600 text-lg max-w-2xl mx-auto">
             Don't just take our word for it. Read what our pilgrims have to say about their spiritual journey with Eastways.
           </p>
         </div>
 
-        <div className="relative h-[600px] overflow-hidden">
-          <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-gray-50 to-transparent z-20 pointer-events-none"></div>
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-50 to-transparent z-20 pointer-events-none"></div>
-
-          {/* CHANGED: gap-3 (was gap-6) to reduce space between columns */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-            <TestimonialColumn items={reviews.slice(0, 3)} duration="40s" />
-            <div className="hidden md:block">
-              <TestimonialColumn items={reviews.slice(2, 5)} duration="55s" />
-            </div>
-            <div className="hidden md:block">
-              <TestimonialColumn items={reviews.slice(3, 6)} duration="45s" />
-            </div>
-          </div>
+        {/* --- MOBILE VIEW (Animated on scroll) --- */}
+        <div className="flex flex-col gap-3 md:hidden overflow-x-hidden py-4">
+          {reviews.map((review, index) => (
+            <MobileAnimatedCard key={review.id} index={index}>
+               <TestimonialCard review={review} />
+            </MobileAnimatedCard>
+          ))}
         </div>
 
+        {/* --- DESKTOP VIEW (3-Column Scrolling Grid) --- */}
+        <div className="hidden md:grid grid-cols-3 gap-4 relative h-[600px] overflow-hidden">
+          {/* Updated gradients to match the slate-50 background */}
+          <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-slate-50 to-transparent z-20 pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-50 to-transparent z-20 pointer-events-none"></div>
+
+          <TestimonialColumn items={reviews.slice(0, 3)} duration="40s" />
+          <TestimonialColumn items={reviews.slice(2, 5)} duration="55s" />
+          <TestimonialColumn items={reviews.slice(3, 6)} duration="45s" />
+        </div>
+
+        {/* Bottom CTA */}
         <div className="mt-16 text-center">
           <button onClick={() => navigate('/contact')}
-            className="bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-700 transition shadow-lg flex items-center gap-2 mx-auto">
+            className="bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-700 hover:shadow-blue-200 hover:scale-105 transition-all duration-300 shadow-lg flex items-center gap-2 mx-auto">
             Book Your Trip Now <ArrowRight size={18} />
           </button>
         </div>
