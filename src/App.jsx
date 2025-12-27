@@ -378,7 +378,7 @@ const Hero = () => {
           className="animate-fade-up text-gray-600 text-sm md:text-base max-w-xl mx-auto mb-10 px-2"
           style={{ animationDelay: '0.2s' }}
         >
-          Premium and Budget Friendly Umrah Hotels, and personalized service so you experience a journey that’s smooth, spiritual, and stress-free.
+          Premium and Budget Friendly Umrah Hotels, and personalised service so you experience a journey that’s smooth, spiritual, and stress-free.
         </p>
 
         {/* GRADIENT BUTTON - UPDATED */}
@@ -844,6 +844,15 @@ const Gallery = () => {
     return () => { window.removeEventListener("scroll", handleScroll); window.removeEventListener("resize", handleScroll); }
   }, []);
 
+  // Feature List Data
+  const features = [
+    "Reliable support before, during, and after your journey",
+    "Exclusive hotel rates through strong industry partnerships",
+    "Transparent pricing with no hidden costs",
+    "Experience handling small and large Umrah groups",
+    "Trusted by travelers worldwide"
+  ];
+
   return (
     <section ref={galleryRef} className="py-24 bg-[#f6f6f6] overflow-hidden relative z-0 min-h-screen">
 
@@ -860,22 +869,34 @@ const Gallery = () => {
       {/* Text Container */}
       <div
         ref={textRef}
-        className="relative z-20 bg-[#f6f6f6] max-w-2xl mx-auto px-6 pb-0 mt-16 text-center"
+        className="relative z-20 bg-[#f6f6f6] max-w-4xl mx-auto px-6 pb-0 mt-16 text-center"
       >
         <h2 className={`text-3xl md:text-5xl font-bold mb-10 text-gray-900 opacity-0 ${isTextVisible ? 'animate-fade-up' : ''}`}>
           Why Choose<br /> Eastways?
         </h2>
-        <p
-          className={`text-gray-600 max-w-xl mx-auto text-lg leading-relaxed opacity-0 ${isTextVisible ? 'animate-fade-up' : ''}`}
+        
+        {/* LIST CONTAINER */}
+        <div 
+          className={`flex flex-col gap-3 opacity-0 ${isTextVisible ? 'animate-fade-up' : ''}`}
           style={{ animationDelay: '0.2s' }}
         >
-          Reliable support before during, and after your journey || Exclusive hotel rates through strong industry partnerships || Transparent pricing with no hidden costs || Experience handling small and large Umrah groups || Trusted by travelers worldwide
-        </p>
+          {features.map((item, index) => (
+            // UPDATED: Added justify-center for desktop alignment
+            <div key={index} className="flex items-center justify-center gap-2 md:gap-3">
+              {/* Blue Tick Icon */}
+              <CheckCircle className="text-blue-600 w-5 h-5 md:w-6 md:h-6 shrink-0" />
+              
+              {/* UPDATED: Changed leading-relaxed to leading-snug and added text-center */}
+              <span className="text-gray-600 text-base md:text-lg leading-snug text-center">
+                {item}
+              </span>
+            </div>
+          ))}
+        </div>
+
       </div>
 
-      {/* GALLERY GRID 
-          CHANGED: Increased mobile top padding from pt-24 to pt-40 to push images lower.
-      */}
+      {/* GALLERY GRID */}
       <div className="flex justify-center gap-2 md:gap-4 w-[160%] -ml-[30%] md:w-[140%] md:-ml-[20%] pt-40 md:pt-64 -mb-40 md:-mb-80">
         {columns.map((colImages, colIndex) => {
 
@@ -911,7 +932,6 @@ const Gallery = () => {
     </section>
   );
 };
-
 
 
 
@@ -1018,7 +1038,7 @@ const VideoSection = () => {
           */}
           <video
             ref={videoRef}
-            onClick={togglePlay} 
+            onClick={togglePlay}
             className="w-full h-full object-cover brightness-[0.7] cursor-pointer"
             loop
             playsInline
@@ -1076,6 +1096,7 @@ const VideoSection = () => {
 const Home = () => (
   <>
     <Hero />
+    <VideoSection />
     <div className="relative z-20 bg-white">
       <Workflowsection
         title="Who Are We?"
@@ -1098,13 +1119,13 @@ const Home = () => (
           className="pt-24 pb-0 bg-white px-20 md:px-40"
         />
         <FeatureSection
-          title="The Noble Eastways Mission"
+          title="Our Mission"
           desc="To become one of the leading and most trusted Umrah service providers in the region, known for excellence, honesty, and hospitality."
           customVisual={<MissionCollage />}
           reverse={false}
           className="pt-20 pb-24 bg-[#f6f6f6] px-6 md:pl-80 md:pr-20"
         />
-        <VideoSection />
+
       </div>
     </div>
   </>
@@ -2077,7 +2098,7 @@ const TestimonialsPage = () => {
   // --- UPDATED CARD COMPONENT (Generic Placeholder) ---
   const TestimonialCard = ({ review }) => (
     <div className="bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-sm border border-blue-100 hover:border-blue-300 hover:shadow-blue-100/50 transition duration-300 w-full mx-auto flex flex-col h-full relative overflow-hidden group">
-      
+
       {/* Decorative Gradient Blob inside card */}
       <div className="absolute top-0 right-0 w-16 h-16 bg-blue-50 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-150 duration-500"></div>
 
@@ -2094,7 +2115,7 @@ const TestimonialsPage = () => {
             <p className="text-[10px] text-blue-500 font-bold uppercase tracking-wide">{review.role}</p>
           </div>
         </div>
-        
+
         <div className="mt-1 shrink-0 bg-blue-50 px-2 py-1 rounded-md">
           {renderStars(review.rating)}
         </div>
@@ -2102,7 +2123,7 @@ const TestimonialsPage = () => {
 
       <p className="text-gray-600 text-xs md:text-sm leading-relaxed relative z-10">
         <span className="inline-block mr-1">
-           <Quote size={12} className="text-blue-400 fill-current transform rotate-180" />
+          <Quote size={12} className="text-blue-400 fill-current transform rotate-180" />
         </span>
         {review.text}
       </p>
@@ -2124,10 +2145,10 @@ const TestimonialsPage = () => {
   );
 
   const navigate = useNavigate();
-  
+
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col pt-32 pb-20 relative overflow-hidden">
-      
+
       {/* --- CREATIVE BACKGROUND ELEMENTS --- */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute top-0 right-[-10%] w-[600px] h-[600px] bg-blue-400/10 rounded-full blur-[100px]"></div>
@@ -2140,7 +2161,7 @@ const TestimonialsPage = () => {
       `}</style>
 
       <div className="max-w-6xl mx-auto w-full px-6 relative z-10">
-        
+
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">
@@ -2155,7 +2176,7 @@ const TestimonialsPage = () => {
         <div className="flex flex-col gap-3 md:hidden overflow-x-hidden py-4">
           {reviews.map((review, index) => (
             <MobileAnimatedCard key={review.id} index={index}>
-               <TestimonialCard review={review} />
+              <TestimonialCard review={review} />
             </MobileAnimatedCard>
           ))}
         </div>
