@@ -243,10 +243,7 @@ const Footer = () => (
         <div>
           <h4 className="font-serif text-xl font-bold mb-8 text-blue-50">Contact</h4>
           <ul className="space-y-6 text-gray-400 text-sm">
-            <li className="flex items-start gap-4">
-              <MapPin size={20} className="text-blue-500 shrink-0 mt-0.5" />
-              <span className="leading-relaxed">123 Sacred Road, View District<br />London, UK</span>
-            </li>
+           
             <li className="flex items-center gap-4">
               <Phone size={20} className="text-blue-500 shrink-0" />
               <span>+44 74 9377 1659</span>
@@ -411,7 +408,6 @@ const FeatureSection = ({ title, desc, image, reverse, iconOverlay, textOverlay,
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Trigger animation when 20% of the section is visible
         if (entry.isIntersecting) {
           setIsVisible(true);
           observer.disconnect();
@@ -430,9 +426,10 @@ const FeatureSection = ({ title, desc, image, reverse, iconOverlay, textOverlay,
   return (
     <section
       ref={sectionRef}
-      className={`overflow-hidden ${className || 'py-24 px-20 md:px-40 bg-white'}`}
+      // UPDATED PADDING: Changed 'px-20' to 'px-6 md:px-20' to fix squished mobile view
+      className={`overflow-hidden ${className || 'py-16 md:py-24 px-6 md:px-20 bg-white'}`}
     >
-      {/* 2. DEFINE ANIMATION STYLES (Scoped to this component) */}
+      {/* 2. DEFINE ANIMATION STYLES */}
       <style>{`
         @keyframes slideInFromLeft {
           from { opacity: 0; transform: translateX(-50px); }
@@ -458,30 +455,29 @@ const FeatureSection = ({ title, desc, image, reverse, iconOverlay, textOverlay,
         }
       `}</style>
 
-      <div className={`flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 ${reverse ? 'md:flex-row-reverse' : ''}`}>
+      <div className={`flex flex-col md:flex-row items-center justify-center gap-12 md:gap-24 ${reverse ? 'md:flex-row-reverse' : ''}`}>
 
-        {/* Text Side 
-            - Logic: If reversed (text on right), slide from right. Else slide from left.
-        */}
+        {/* Text Side */}
         <div
-          className={`w-full md:w-1/2 flex flex-col justify-center items-start opacity-0 
+          // UPDATED ALIGNMENT:
+          // 1. Added 'items-center text-center' for mobile centering.
+          // 2. Added 'md:items-start md:text-left' to restore left align on desktop.
+          className={`w-full md:w-1/2 flex flex-col justify-center items-center text-center md:items-start md:text-left opacity-0 
             ${isVisible ? (reverse ? 'animate-slide-right' : 'animate-slide-left') : ''}
           `}
         >
           <div className="max-w-md">
-            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-10 leading-tight">
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 md:mb-10 leading-tight">
               {title}
             </h2>
-            <p className="w-full w-[85%] text-gray-600 text-medium leading-relaxed mb-8">
+            {/* UPDATED PARAGRAPH: Removed 'w-[85%]' so padding is equal on both sides */}
+            <p className="w-full text-gray-600 text-medium leading-relaxed mb-8">
               {desc}
             </p>
           </div>
         </div>
 
-        {/* Visual Side 
-            - Logic: If reversed (image on left), slide from left. Else slide from right.
-            - Added delay (0.2s) so it follows the text slightly
-        */}
+        {/* Visual Side */}
         <div
           className={`w-full md:w-1/2 relative flex justify-center opacity-0 
             ${isVisible ? (reverse ? 'animate-slide-left' : 'animate-slide-right') : ''}
@@ -493,7 +489,7 @@ const FeatureSection = ({ title, desc, image, reverse, iconOverlay, textOverlay,
             customVisual
           ) : (
             <>
-              {/* Icon Overlay - delayed drop in */}
+              {/* Icon Overlay */}
               {iconOverlay && (
                 <div
                   className={`absolute -top-3 left-14 z-20 w-20 h-20 md:w-28 md:h-28 drop-shadow-2xl opacity-0 
@@ -506,11 +502,11 @@ const FeatureSection = ({ title, desc, image, reverse, iconOverlay, textOverlay,
               )}
 
               {/* Main Image */}
-              <div className={`relative z-10 w-full ${imageSizeClass || 'max-w-sm'} shadow-xl`}>
+              <div className={`relative z-10 w-full ${imageSizeClass || 'max-w-sm'} shadow-xl rounded-2xl overflow-hidden`}>
                 <img src={image} alt="Feature" className="w-full h-auto object-cover" />
               </div>
 
-              {/* Text Overlay - delayed drop in */}
+              {/* Text Overlay */}
               {textOverlay && (
                 <div
                   className={`absolute bottom-5 -right-2 md:-right-2 z-20 w-40 md:w-60 opacity-0 
@@ -534,10 +530,12 @@ const FeatureSection = ({ title, desc, image, reverse, iconOverlay, textOverlay,
 
 
 const TravelCollage = () => (
-  <div className="relative w-full max-w-md h-[400px] flex items-center justify-center">
+  // Increased mobile height (h-80) and max-width (max-w-[340px]) to fit larger images
+  <div className="relative w-full max-w-[340px] md:max-w-md h-80 md:h-[400px] flex items-center justify-center mx-auto">
 
-    {/* 1. Back Layer: The Holy Kaaba (Large, tilted left) */}
-    <div className="absolute top-0 left-4 w-64 h-64 rounded-3xl overflow-hidden shadow-2xl transform -rotate-6 z-10 border-4 border-white">
+    {/* 1. Back Layer: The Holy Kaaba */}
+    {/* Increased to w-48 h-48 on mobile (was w-40 h-40) */}
+    <div className="absolute top-0 left-3 md:left-4 w-48 h-48 md:w-64 md:h-64 rounded-2xl md:rounded-3xl overflow-hidden shadow-xl transform -rotate-6 z-10 border-2 md:border-4 border-white">
       <img
         src={g14}
         alt="Holy Kaaba"
@@ -545,28 +543,30 @@ const TravelCollage = () => (
       />
     </div>
 
-    {/* 2. Middle Layer: The Mobile App (Centered, upright) */}
-    <div className="absolute top-12 right-8 w-48 h-80 rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] z-20 border-[6px] border-white bg-gray-100">
+    {/* 2. Middle Layer: The Mobile App */}
+    {/* Increased to w-36 h-60 on mobile (was w-32 h-52) */}
+    <div className="absolute top-4 right-3 md:top-12 md:right-8 w-36 h-60 md:w-48 md:h-80 rounded-2xl md:rounded-[2rem] overflow-hidden shadow-xl z-20 border-4 md:border-[6px] border-white bg-gray-100">
       <img
         src={g18}
         alt="Mobile App Interface"
         className="w-full h-full object-cover"
       />
-      {/* Overlay to simulate app UI header */}
-      <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-black/50 to-transparent"></div>
+      <div className="absolute top-0 left-0 right-0 h-10 md:h-16 bg-gradient-to-b from-black/50 to-transparent"></div>
     </div>
 
-    {/* 3. Front Layer: Travel Documents (Bottom left, floating) */}
-    <div className="absolute bottom-10 left-0 w-48 h-auto z-30 transform rotate-3 hover:scale-105 transition duration-300">
-      <div className="bg-white p-2 rounded-xl shadow-2xl">
+    {/* 3. Front Layer: Travel Documents */}
+    {/* Increased width to w-44 (was w-40) */}
+    <div className="absolute bottom-4 left-4 md:bottom-10 md:left-0 w-44 md:w-48 h-auto z-30 transform rotate-3 hover:scale-105 transition duration-300">
+      <div className="bg-white p-1.5 md:p-2 rounded-lg md:rounded-xl shadow-2xl">
         <img
           src={g16}
           alt="Travel Documents"
-          className="w-full h-32 object-cover rounded-lg"
+          // Increased image height to h-28 (was h-24)
+          className="w-full h-28 md:h-32 object-cover rounded-md md:rounded-lg"
         />
 
-        {/* Decorative Badge */}
-        <div className="absolute -top-3 -right-3 bg-blue-600 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-md border border-white">
+        {/* Badge */}
+        <div className="absolute -top-2 -right-2 md:-top-3 md:-right-3 bg-blue-600 text-white text-[9px] md:text-[10px] font-bold px-2 py-0.5 md:px-3 md:py-1 rounded-full shadow-md border border-white">
           VISA READY
         </div>
       </div>
@@ -578,46 +578,44 @@ const TravelCollage = () => (
 
 
 
-
-
 const MissionCollage = () => (
-  // Added a slight tilt to the main container for variety from the first collage
-  <div className="relative w-full max-w-md h-[400px] flex items-center justify-center transform rotate-2">
+  // Increased mobile height and width limits
+  <div className="relative w-full max-w-[340px] md:max-w-md h-80 md:h-[400px] flex items-center justify-center transform rotate-2 mx-auto">
 
-    {/* 1. Back Layer: Masjid an-Nabawi (Madinah) - Tilted Right */}
-    <div className="absolute top-0 left-4 w-64 h-64 rounded-3xl overflow-hidden shadow-2xl transform rotate-6 z-10 border-4 border-white bg-gray-200">
+    {/* 1. Back Layer: Masjid an-Nabawi */}
+    {/* Increased to w-48 h-48 on mobile */}
+    <div className="absolute top-0 left-4 md:left-4 w-48 h-48 md:w-64 md:h-64 rounded-2xl md:rounded-3xl overflow-hidden shadow-xl transform rotate-6 z-10 border-2 md:border-4 border-white bg-gray-200">
       <img
-        // Image of Prophet's Mosque green dome
         src={hotel11}
         alt="Masjid an-Nabawi"
         className="w-full h-full object-cover"
       />
     </div>
 
-    {/* 2. Middle Layer: Luxury Hospitality/Excellence - Upright */}
-    <div className="absolute top-12 right-8 w-56 h-72 rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] z-20 border-[6px] border-white bg-gray-100">
+    {/* 2. Middle Layer: Luxury Hospitality */}
+    {/* Increased to w-36 h-56 on mobile (was w-32 h-48) */}
+    <div className="absolute top-2 right-4 md:top-12 md:right-8 w-36 h-56 md:w-56 md:h-72 rounded-2xl md:rounded-[2rem] overflow-hidden shadow-xl z-20 border-4 md:border-[6px] border-white bg-gray-100">
       <img
-        // Image of luxury hotel interior
         src={hotel36}
         alt="Luxury Accommodation"
         className="w-full h-full object-cover"
       />
-      {/* Golden Overlay for a premium feel */}
       <div className="absolute inset-0 bg-gradient-to-t from-yellow-900/30 to-transparent mix-blend-overlay"></div>
     </div>
 
-    {/* 3. Front Layer: Guidance/Community - Tilted Left */}
-    <div className="absolute bottom-12 -left-6 w-56 h-auto z-30 transform -rotate-3 hover:scale-105 transition duration-300">
-      <div className="bg-white p-2 rounded-xl shadow-2xl">
+    {/* 3. Front Layer: Guidance/Community */}
+    {/* Increased width to w-48 (was w-44) */}
+    <div className="absolute bottom-4 left-3 md:bottom-12 md:-left-6 w-48 md:w-56 h-auto z-30 transform -rotate-3 hover:scale-105 transition duration-300">
+      <div className="bg-white p-1.5 md:p-2 rounded-lg md:rounded-xl shadow-2xl">
         <img
-          // Image of pilgrims together/guided tour vibe
           src={g17}
           alt="Guided Pilgrims"
-          className="w-full h-36 object-cover rounded-lg brightness-110"
+          // Increased height to h-28 (was h-24)
+          className="w-full h-28 md:h-36 object-cover rounded-md md:rounded-lg brightness-110"
         />
 
-        {/* Decorative Badge - UPDATED TEXT & COLOR */}
-        <div className="absolute -top-3 -right-3 bg-blue-600 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-md border border-white flex items-center gap-1">
+        {/* Badge */}
+        <div className="absolute -top-2 -right-2 md:-top-3 md:-right-3 bg-blue-600 text-white text-[9px] md:text-[10px] font-bold px-2 py-0.5 md:px-3 md:py-1 rounded-full shadow-md border border-white flex items-center gap-1">
           <span>TRUSTED GUIDE</span>
         </div>
       </div>
@@ -625,6 +623,10 @@ const MissionCollage = () => (
 
   </div>
 );
+
+
+
+
 
 
 
@@ -674,7 +676,6 @@ const Workflowsection = ({ title, desc, iconOverlay, textOverlay, customImages }
 
 
   return (
-    // CHANGED: Reduced padding (px-6) on mobile, larger padding on desktop
     <section ref={sectionRef} className="py-24 px-6 md:px-20 lg:px-40 bg-white overflow-hidden">
 
       {/* 3. DEFINE CUSTOM ANIMATIONS */}
@@ -705,8 +706,7 @@ const Workflowsection = ({ title, desc, iconOverlay, textOverlay, customImages }
 
       <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-24">
 
-        {/* Text Side - Animates from LEFT */}
-        {/* CHANGED: Added 'items-center text-center' for mobile, 'md:items-start md:text-left' for desktop */}
+        {/* Text Side */}
         <div
           className={`w-full md:w-1/3 flex flex-col justify-center items-center md:items-start text-center md:text-left opacity-0 ${isVisible ? 'animate-slide-left' : ''}`}
         >
@@ -714,14 +714,13 @@ const Workflowsection = ({ title, desc, iconOverlay, textOverlay, customImages }
             <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-10 leading-tight">
               {title}
             </h2>
-            {/* CHANGED: Removed fixed width w-[85%] on mobile to allow full centering */}
             <p className="w-full md:w-[85%] text-gray-600 text-medium leading-relaxed mb-8">
               {desc}
             </p>
           </div>
         </div>
 
-        {/* Carousel Side - Animates from RIGHT */}
+        {/* Carousel Side */}
         <div
           className={`w-full md:w-1/2 relative flex justify-center opacity-0 ${isVisible ? 'animate-slide-right' : ''}`}
           style={{ animationDelay: '0.2s' }}
@@ -730,7 +729,8 @@ const Workflowsection = ({ title, desc, iconOverlay, textOverlay, customImages }
           {/* 'E' Badge Overlay */}
           {iconOverlay && (
             <div
-              className={`absolute -top-3 left-14 z-30 w-20 h-20 md:w-28 md:h-28 drop-shadow-2xl opacity-0 ${isVisible ? 'animate-drop-in' : ''}`}
+              // UPDATED: Added 'rounded-full' class for circular edges
+              className={`absolute -top-3 left-4 md:left-14 z-30 w-20 h-20 md:w-28 md:h-28 drop-shadow-2xl rounded-full overflow-hidden opacity-0 ${isVisible ? 'animate-drop-in' : ''}`}
               style={{ animationDelay: '0.3s' }}
             >
               <img src={iconOverlay} alt="Badge" className="w-full h-full object-contain" />
@@ -840,7 +840,7 @@ const Gallery = () => {
   ];
 
   return (
-    <section ref={galleryRef} className="py-24 bg-[#f6f6f6] overflow-hidden relative z-0 min-h-screen">
+    <section ref={galleryRef} className="py-4 bg-[#f6f6f6] overflow-hidden relative z-0 min-h-[700px] md:min-h-0">
 
       <style>{`
         @keyframes fadeUp {
@@ -868,12 +868,12 @@ const Gallery = () => {
         >
           {features.map((item, index) => (
             // UPDATED: Added justify-center for desktop alignment
-            <div key={index} className="flex items-center justify-center gap-2 md:gap-3">
+            <div key={index} className="flex items-center justify-left md:justify-center gap-2 md:gap-3">
               {/* Blue Tick Icon */}
               <CheckCircle className="text-blue-600 w-5 h-5 md:w-6 md:h-6 shrink-0" />
 
               {/* UPDATED: Changed leading-relaxed to leading-snug and added text-center */}
-              <span className="text-gray-600 text-base md:text-lg leading-snug text-center">
+              <span className="text-gray-600 text-base md:text-lg leading-snug text-left md:text-center">
                 {item}
               </span>
             </div>
@@ -883,7 +883,7 @@ const Gallery = () => {
       </div>
 
       {/* GALLERY GRID */}
-      <div className="flex justify-center gap-2 md:gap-4 w-[160%] -ml-[30%] md:w-[140%] md:-ml-[20%] pt-40 md:pt-64 -mb-40 md:-mb-80">
+      <div className="flex justify-center gap-2 md:gap-4 w-[160%] -ml-[30%] md:w-[140%] md:-ml-[20%] pt-20 md:pt-64 -mb-40 md:-mb-80">
         {columns.map((colImages, colIndex) => {
 
           const hiddenOnMobile = (colIndex === 0 || colIndex === 6) ? 'hidden md:flex' : 'flex';
@@ -1102,7 +1102,7 @@ const Home = () => (
           customVisual={<TravelCollage />}
 
           reverse={true}
-          className="pt-24 pb-0 bg-white px-20 md:px-40"
+          className="pt-24 pb-0 md:pb-20 bg-white px-6 md:px-40"
         />
         <FeatureSection
           title="Our Mission"
@@ -1300,6 +1300,8 @@ const ContactPage = () => {
 
 
 
+
+
 const HotelCard = ({ hotel, index }) => {
   // --- 1. SCROLL ANIMATION LOGIC ---
   const [isVisible, setIsVisible] = useState(false);
@@ -1340,13 +1342,8 @@ const HotelCard = ({ hotel, index }) => {
 
   // --- 3. WHATSAPP HANDLER ---
   const handleCheckAvailability = () => {
-    // 1. Define the phone number
     const phoneNumber = "4474937716559";
-
-    // 2. Create a dynamic message including the hotel name
     const message = `Hello! I am interested in checking availability for *${hotel.name}* in ${hotel.city}.`;
-
-    // 3. Open WhatsApp
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
@@ -1422,7 +1419,9 @@ const HotelCard = ({ hotel, index }) => {
 
         {/* --- FOOTER --- */}
         <div className="mt-auto flex flex-row items-center justify-between pt-3 md:pt-6 border-t border-gray-100 gap-3">
-          <div>
+          
+          {/* PRICE INFO: Hidden on Mobile, Block on Desktop */}
+          <div className="hidden md:block">
             <span className="text-[10px] md:text-xs text-gray-400 block mb-0.5">Rate</span>
             <span className="text-xs md:text-sm font-medium text-blue-600 leading-none block">
               Inquire<br />for price
@@ -1431,7 +1430,8 @@ const HotelCard = ({ hotel, index }) => {
 
           <button
             onClick={handleCheckAvailability}
-            className="bg-blue-600 text-white px-4 py-2 md:px-6 md:py-2.5 rounded-lg md:rounded-xl text-xs md:text-sm font-semibold hover:bg-gray-900 transition shadow-md whitespace-nowrap"
+            // Button is w-full on mobile, w-auto on desktop
+            className="w-full md:w-auto bg-blue-600 text-white px-4 py-2 md:px-6 md:py-2.5 rounded-lg md:rounded-xl text-xs md:text-sm font-semibold hover:bg-gray-900 transition shadow-md whitespace-nowrap"
           >
             Check Availability
           </button>
@@ -1441,7 +1441,7 @@ const HotelCard = ({ hotel, index }) => {
   );
 };
 
-// --- UPDATED HOTELS PAGE (With Animations) ---
+// --- HOTELS PAGE COMPONENT ---
 const HotelsPage = () => {
   const [activeFilter, setActiveFilter] = useState('All');
 
@@ -1466,7 +1466,7 @@ const HotelsPage = () => {
       city: "Makkah",
       location: "Abraj Al Bait",
       rating: 4.8,
-      price: "$210", // Kept in data, but hidden in UI
+      price: "$210", 
       images: [hotel35, hotel36],
       amenities: ["Haram View", "Direct Access", "5 Star"]
     },
