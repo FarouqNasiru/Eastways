@@ -78,27 +78,25 @@ import supportAgent from './assets/images/support-agent.jpg';
 
 
 
-// --- 1. NAVBAR COMPONENT ---
 const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // NEW: State for mobile menu
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
 
-  // Scroll Logic (Hide/Show on scroll)
+  // Scroll Logic
   useEffect(() => {
     const controlNavbar = () => {
       if (typeof window !== 'undefined') {
         const currentScrollY = window.scrollY;
 
-        // Always show if at top, otherwise hide on scroll down
         if (currentScrollY === 0) {
           setIsVisible(true);
         } else if (currentScrollY > lastScrollY) {
-          setIsVisible(false); // Hide on scroll down
-          setIsMobileMenuOpen(false); // Auto-close mobile menu on scroll
+          setIsVisible(false);
+          setIsMobileMenuOpen(false);
         } else {
-          setIsVisible(true); // Show on scroll up
+          setIsVisible(true);
         }
         setLastScrollY(currentScrollY);
       }
@@ -108,7 +106,6 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', controlNavbar);
   }, [lastScrollY]);
 
-  // Helper to close menu when clicking a link
   const handleLinkClick = (path) => {
     setIsMobileMenuOpen(false);
     if (path) navigate(path);
@@ -116,26 +113,26 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 md:top-6 left-0 right-0 z-50 flex justify-center px-4 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-40'}`}
+      // UPDATED: Changed 'top-0' to 'top-4' to create the floating effect on mobile
+      className={`fixed top-4 md:top-6 left-0 right-0 z-50 flex justify-center px-4 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-40'}`}
     >
       {/* Main Container */}
-      <div className="bg-white/95 backdrop-blur-md rounded-b-2xl md:rounded-2xl shadow-xl border border-gray-100 px-4 py-3 w-full max-w-6xl relative">
+      {/* UPDATED: Changed 'rounded-b-2xl' to 'rounded-2xl' for a full pill shape on all screens */}
+      <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-gray-100 px-4 py-3 w-full max-w-6xl relative">
 
         <div className="flex justify-between items-center">
 
           {/* --- LOGO SECTION --- */}
           <Link to="/" className="flex items-center space-x-2 cursor-pointer z-50" onClick={() => setIsMobileMenuOpen(false)}>
-            {/* Icon */}
             <div className="w-10 h-10 flex items-center justify-center rounded-full overflow-hidden">
               <img src={LogoIcon} alt="Eastways Icon" className="w-full h-full object-cover" />
             </div>
-            {/* Text Logo */}
             <div className="h-5 flex items-center">
               <img src={LogoText} alt="Eastways" className="h-full w-auto object-contain" />
             </div>
           </Link>
 
-          {/* --- DESKTOP MENU (Hidden on Mobile) --- */}
+          {/* --- DESKTOP MENU --- */}
           <div className="hidden md:flex space-x-8 font-medium text-sm text-gray-600">
             <Link to="/" className="hover:text-blue-600 transition">Home</Link>
             <Link to="/services" className="hover:text-blue-600 transition">Services</Link>
@@ -144,7 +141,7 @@ const Navbar = () => {
             <Link to="/faqs" className="hover:text-blue-600 transition">FAQs</Link>
           </div>
 
-          {/* --- DESKTOP BUTTON (Hidden on Mobile) --- */}
+          {/* --- DESKTOP BUTTON --- */}
           <button
             onClick={() => navigate('/contact')}
             className="hidden md:flex bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl font-medium transition text-sm shadow-md items-center gap-2"
@@ -153,7 +150,7 @@ const Navbar = () => {
             <span>Contact us</span>
           </button>
 
-          {/* --- MOBILE TOGGLE BUTTON (Visible only on Mobile) --- */}
+          {/* --- MOBILE TOGGLE BUTTON --- */}
           <button
             className="md:hidden text-gray-700 hover:text-blue-600 transition focus:outline-none z-50 p-1"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -163,9 +160,9 @@ const Navbar = () => {
         </div>
 
         {/* --- MOBILE DROPDOWN MENU --- */}
-        {/* Absolute position to drop down from the header */}
+        {/* UPDATED: Added 'mt-2' and 'rounded-2xl' so the menu floats separately below the navbar */}
         <div
-          className={`absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md border-t border-gray-100 shadow-xl overflow-hidden transition-all duration-300 ease-in-out md:hidden flex flex-col rounded-b-2xl ${isMobileMenuOpen ? 'max-h-[400px] opacity-100 py-6' : 'max-h-0 opacity-0 py-0'
+          className={`absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md shadow-xl overflow-hidden transition-all duration-300 ease-in-out md:hidden flex flex-col mt-2 rounded-2xl ${isMobileMenuOpen ? 'max-h-[400px] opacity-100 py-6 border border-gray-100' : 'max-h-0 opacity-0 py-0 border-0'
             }`}
         >
           <div className="flex flex-col items-center space-y-6 font-medium text-lg text-gray-700">
@@ -175,7 +172,6 @@ const Navbar = () => {
             <button onClick={() => handleLinkClick('/testimonials')} className="hover:text-blue-600 transition">Testimonials</button>
             <button onClick={() => handleLinkClick('/faqs')} className="hover:text-blue-600 transition">FAQs</button>
 
-            {/* Mobile Contact Button */}
             <button
               onClick={() => handleLinkClick('/contact')}
               className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-medium transition shadow-md flex items-center gap-2 mt-4"
@@ -190,6 +186,8 @@ const Navbar = () => {
     </nav>
   );
 };
+
+
 
 // --- 2. FOOTER COMPONENT ---
 const Footer = () => (
@@ -323,49 +321,39 @@ const GradientButton = ({ children, className, onClick }) => {
 const Hero = () => {
   const navigate = useNavigate();
   return (
-    <header className="relative w-full min-h-screen flex flex-col justify-center items-center text-center overflow-x-hidden">
+    // UPDATED HEADER CLASS:
+    // 1. 'min-h-[600px] md:min-h-screen': Shortens height on mobile, full height on desktop.
+    // 2. 'pb-24 md:pb-0': Adds bottom padding on mobile so content doesn't hit the absolute footer.
+    <header className="relative w-full min-h-[700px] md:min-h-screen flex flex-col items-center text-center overflow-x-hidden pt-40 md:pt-40 pb-48 md:pb-0">
 
-      {/* Background - Adjusted opacity and gradient */}
+      {/* Background */}
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-blue-100 via-blue-50 to-white"></div>
       <div className="absolute inset-0 z-0 opacity-40" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?auto=format&fit=crop&q=80")', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
 
-      {/* 1. DEFINE ANIMATION STYLES */}
+      {/* Animation Styles */}
       <style>{`
-      @keyframes fadeUp {
-        from { 
-          opacity: 0; 
-          transform: translateY(30px); 
-        }
-        to { 
-          opacity: 1; 
-          transform: translateY(0); 
-        }
-      }
-      .animate-fade-up {
-        animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-        opacity: 0;
-      }
-    `}</style>
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-up {
+        animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        opacity: 0;
+      }
+    `}</style>
 
-      {/* Main Container - Added w-full and px-4 for safety */}
-      <div className="z-10 w-full max-w-4xl mx-auto mt-24 px-4 md:px-6">
+      {/* Main Content Container */}
+      <div className="z-10 w-full max-w-4xl mx-auto px-4 md:px-6">
 
-        {/* BADGE SECTION */}
-        {/* Changed min-w to w-auto and added max-w-full to prevent overflow */}
+        {/* Badge */}
         <div className="animate-fade-up relative inline-flex items-center justify-center bg-white/80 backdrop-blur-md py-1.5 px-1.5 pr-4 rounded-full mb-6 border border-white shadow-sm max-w-full w-auto">
-          {/* Logo Icon */}
           <div className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center shadow-md overflow-hidden bg-white">
-            <img
-              src={LogoIcon}
-              alt="Eastways"
-              className="w-full h-full object-cover"
-            />
+            <img src={LogoIcon} alt="Eastways" className="w-full h-full object-cover" />
           </div>
           <span className="text-xs md:text-sm font-semibold text-gray-800 ml-3 whitespace-nowrap">Plan Your Spiritual Journey</span>
         </div>
 
-        {/* HEADING */}
-        {/* Added break-words and adjusted mobile sizing */}
+        {/* Heading */}
         <h1
           className="animate-fade-up text-4xl sm:text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight break-words"
           style={{ animationDelay: '0.1s' }}
@@ -373,18 +361,17 @@ const Hero = () => {
           Your Sacred Journey Begins with<br className="hidden md:block" /> Eastways
         </h1>
 
-        {/* SUBHEADING */}
+        {/* Subheading */}
         <p
           className="animate-fade-up text-gray-600 text-sm md:text-base max-w-xl mx-auto mb-10 px-2"
           style={{ animationDelay: '0.2s' }}
         >
-          Premium and Budget Friendly Umrah Hotels, and personalised service so you experience a journey that’s smooth, spiritual, and stress-free.
+          Premium and Budget Friendly Umrah Hotels, and personalized service so you experience a journey that’s smooth, spiritual, and stress-free.
         </p>
 
-        {/* GRADIENT BUTTON - UPDATED */}
+        {/* Button */}
         <div className="animate-fade-up w-full flex justify-center" style={{ animationDelay: '0.3s' }}>
           <GradientButton
-            // 3. Add the navigation handler here
             onClick={() => navigate('/contact')}
             className="w-full sm:w-auto px-6 py-3 rounded-2xl font-semibold hover:scale-105 shadow-lg"
           >
@@ -392,29 +379,28 @@ const Hero = () => {
           </GradientButton>
         </div>
 
-
-        {/* FOOTER TEXT */}
-        <div
-          className="animate-fade-up mt-12 md:mt-20 flex flex-col items-center gap-4"
-          style={{ animationDelay: '0.5s' }}
-        >
-          <p className="text-sm text-gray-500 font-semibold">Follow our journey <span className="font-bold">@GoEastWays</span></p>
-
-          {/* Features List - Flex wrap added for mobile safety */}
-          <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-[10px] md:text-xs font-semibold text-gray-500 uppercase tracking-widest px-2">
-            <span>Umrah</span><span>•</span>
-            <span>Hotel Deals</span><span>•</span>
-            <span>Transportation</span><span>•</span>
-            <span>Visa</span><span>•</span>
-            <span>24/7 Support</span>
-          </div>
-        </div>
-
       </div>
+
+      {/* FOOTER TEXT */}
+      <div
+        className="absolute bottom-6 left-0 right-0 z-10 animate-fade-up flex flex-col items-center gap-4 w-full px-4"
+        style={{ animationDelay: '0.5s' }}
+      >
+        <p className="text-sm text-gray-500 font-semibold">Follow our journey <span className="font-bold">@GoEastWays</span></p>
+
+        {/* Features List */}
+        <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-[10px] md:text-xs font-semibold text-gray-500 uppercase tracking-widest">
+          <span>Umrah</span><span>•</span>
+          <span>Hotel Deals</span><span>•</span>
+          <span>Transportation</span><span>•</span>
+          <span>Visa</span><span>•</span>
+          <span>24/7 Support</span>
+        </div>
+      </div>
+
     </header>
   );
 };
-
 
 const FeatureSection = ({ title, desc, image, reverse, iconOverlay, textOverlay, className, imageSizeClass, customVisual }) => {
 
@@ -874,9 +860,9 @@ const Gallery = () => {
         <h2 className={`text-3xl md:text-5xl font-bold mb-10 text-gray-900 opacity-0 ${isTextVisible ? 'animate-fade-up' : ''}`}>
           Why Choose<br /> Eastways?
         </h2>
-        
+
         {/* LIST CONTAINER */}
-        <div 
+        <div
           className={`flex flex-col gap-3 opacity-0 ${isTextVisible ? 'animate-fade-up' : ''}`}
           style={{ animationDelay: '0.2s' }}
         >
@@ -885,7 +871,7 @@ const Gallery = () => {
             <div key={index} className="flex items-center justify-center gap-2 md:gap-3">
               {/* Blue Tick Icon */}
               <CheckCircle className="text-blue-600 w-5 h-5 md:w-6 md:h-6 shrink-0" />
-              
+
               {/* UPDATED: Changed leading-relaxed to leading-snug and added text-center */}
               <span className="text-gray-600 text-base md:text-lg leading-snug text-center">
                 {item}
@@ -974,7 +960,7 @@ const VideoSection = () => {
   };
 
   return (
-    <section ref={sectionRef} className="py-24 px-6 md:px-20 bg-white overflow-hidden">
+    <section ref={sectionRef} className="pt-24 pb-0 md:pb-24 px-6 md:px-20 bg-white overflow-hidden">
 
       <style>{`
         @keyframes fadeUp {
