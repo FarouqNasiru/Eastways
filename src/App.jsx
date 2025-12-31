@@ -113,21 +113,23 @@ const Navbar = () => {
 
   return (
     <nav
-      // UPDATED: Changed 'top-0' to 'top-4' to create the floating effect on mobile
       className={`fixed top-4 md:top-6 left-0 right-0 z-50 flex justify-center px-4 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-40'}`}
     >
-      {/* Main Container */}
-      {/* UPDATED: Changed 'rounded-b-2xl' to 'rounded-2xl' for a full pill shape on all screens */}
       <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-gray-100 px-4 py-3 w-full max-w-6xl relative">
 
         <div className="flex justify-between items-center">
 
           {/* --- LOGO SECTION --- */}
-          <Link to="/" className="flex items-center space-x-2 cursor-pointer z-50" onClick={() => setIsMobileMenuOpen(false)}>
-            <div className="w-10 h-10 flex items-center justify-center rounded-full overflow-hidden">
+          {/* Changed space-x-2 to gap-2 for better handling of hidden elements */}
+          <Link to="/" className="flex items-center gap-2 cursor-pointer z-50" onClick={() => setIsMobileMenuOpen(false)}>
+            
+            {/* UPDATED: Added 'hidden md:flex' to hide icon on mobile */}
+            <div className="hidden md:flex w-10 h-10 items-center justify-center rounded-full overflow-hidden">
               <img src={LogoIcon} alt="Eastways Icon" className="w-full h-full object-cover" />
             </div>
-            <div className="h-5 flex items-center">
+            
+            {/* Text Logo - Always Visible */}
+            <div className="h-5 mt-2 flex items-center">
               <img src={LogoText} alt="Eastways" className="h-full w-auto object-contain" />
             </div>
           </Link>
@@ -160,7 +162,6 @@ const Navbar = () => {
         </div>
 
         {/* --- MOBILE DROPDOWN MENU --- */}
-        {/* UPDATED: Added 'mt-2' and 'rounded-2xl' so the menu floats separately below the navbar */}
         <div
           className={`absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md shadow-xl overflow-hidden transition-all duration-300 ease-in-out md:hidden flex flex-col mt-2 rounded-2xl ${isMobileMenuOpen ? 'max-h-[400px] opacity-100 py-6 border border-gray-100' : 'max-h-0 opacity-0 py-0 border-0'
             }`}
@@ -186,6 +187,9 @@ const Navbar = () => {
     </nav>
   );
 };
+
+
+
 
 
 
@@ -1111,7 +1115,7 @@ const Home = () => (
           reverse={false}
           className="pt-20 pb-24 bg-[#f6f6f6] px-6 md:pl-80 md:pr-20"
         />
-
+      <TestimonialsPage />
       </div>
     </div>
   </>
