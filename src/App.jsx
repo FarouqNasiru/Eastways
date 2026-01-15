@@ -191,3 +191,36 @@ const Navbar = () => {
 
 
 
+
+
+
+// --- 4. PAGE LAYOUTS ---
+
+// The "Home" Page Content
+const Home = () => (
+  <>
+    <Hero />
+    
+     
+  </>
+);
+
+
+
+
+
+
+
+// --- 5. MAIN APP COMPONENT (Wraps everything in Router) ---
+export default function App() {
+  return (
+    <Router>
+      <div className="font-sans text-gray-900 bg-white">
+        {/* Navbar stays visible on all pages */}
+        <Navbar />
+
+      
+      </div>
+    </Router>
+  );
+}
